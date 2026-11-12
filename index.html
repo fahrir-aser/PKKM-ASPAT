@@ -270,9 +270,12 @@
     <!-- ==================== CONTAINER UTAMA APLIKASI ==================== -->
     <div id="appContainer" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
 
-        <!-- HEADER SECTION BRANDING -->
-        <header id="mainAppHeader" class="relative overflow-hidden rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center py-4 px-4 sm:px-6 gap-4 mb-4 border-b border-slate-200/60 transition-all bg-cover bg-center">
-            <div id="headerBannerOverlay" class="hidden absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/20 pointer-events-none"></div>
+        <!-- HEADER SECTION BRANDING (RESPONSIF UTUH DI HP & TETAP DI LAPTOP) -->
+        <header id="mainAppHeader" class="relative overflow-hidden rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center py-4 px-4 sm:px-6 gap-4 mb-4 border-b border-slate-200/60 transition-all">
+            <!-- Gambar Banner Utuh Responsif (Tampil utuh 100% dari kiri ke kanan di HP maupun Laptop tanpa terpotong) -->
+            <img id="customHeaderBannerImg" src="" alt="Banner Header PKKM Digital Aspat" class="hidden w-full h-auto block select-none" />
+
+            <div id="headerBannerOverlay" class="hidden absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/15 pointer-events-none"></div>
 
             <div id="defaultHeaderBranding" class="flex items-center space-x-3.5 sm:space-x-4 relative z-10">
                 <div id="headerLogoContainer" class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-brandGreen flex items-center justify-center text-amber-300 shadow-lg flex-shrink-0 border-2 border-amber-400 overflow-hidden transition-all p-0.5">
@@ -294,8 +297,6 @@
                     </div>
                 </div>
             </div>
-
-            <div id="bannerHeightSpacer" class="hidden h-16 sm:h-20"></div>
 
             <div id="authHeader" class="flex items-center space-x-3 self-end md:self-auto relative z-10 ml-auto"></div>
         </header>
@@ -2056,26 +2057,37 @@
 
         function renderHeaderBanner() {
             const headerEl = document.getElementById('mainAppHeader');
+            const bannerImg = document.getElementById('customHeaderBannerImg');
             const defaultBranding = document.getElementById('defaultHeaderBranding');
-            const spacer = document.getElementById('bannerHeightSpacer');
+            const authHeader = document.getElementById('authHeader');
             const overlay = document.getElementById('headerBannerOverlay');
 
             if (!headerEl) return;
 
             if (customBannerData) {
-                headerEl.style.backgroundImage = `url('${customBannerData}')`;
-                headerEl.style.backgroundSize = 'cover';
-                headerEl.style.backgroundPosition = 'left center';
-                headerEl.classList.add('shadow-md', 'border', 'border-amber-400/70', 'min-h-[115px]', 'sm:min-h-[135px]');
+                headerEl.style.backgroundImage = '';
+                headerEl.className = 'relative overflow-hidden rounded-2xl mb-4 shadow-md border border-amber-400/70 bg-white transition-all';
+                if (bannerImg) {
+                    bannerImg.src = customBannerData;
+                    bannerImg.classList.remove('hidden');
+                }
                 if (defaultBranding) defaultBranding.classList.add('hidden');
-                if (spacer) spacer.classList.remove('hidden');
-                if (overlay) overlay.classList.remove('hidden');
+                if (overlay) overlay.classList.add('hidden');
+                if (authHeader) {
+                    authHeader.className = 'relative md:absolute md:inset-y-0 md:right-0 z-10 flex items-center justify-end space-x-3 px-4 py-2.5 md:px-6 md:py-0 bg-white/95 md:bg-transparent border-t border-slate-100 md:border-none w-full md:w-auto';
+                }
             } else {
                 headerEl.style.backgroundImage = '';
-                headerEl.classList.remove('shadow-md', 'border', 'border-amber-400/70', 'min-h-[115px]', 'sm:min-h-[135px]');
+                headerEl.className = 'relative overflow-hidden rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center py-4 px-4 sm:px-6 gap-4 mb-4 border-b border-slate-200/60 transition-all';
+                if (bannerImg) {
+                    bannerImg.src = '';
+                    bannerImg.classList.add('hidden');
+                }
                 if (defaultBranding) defaultBranding.classList.remove('hidden');
-                if (spacer) spacer.classList.add('hidden');
                 if (overlay) overlay.classList.add('hidden');
+                if (authHeader) {
+                    authHeader.className = 'flex items-center space-x-3 self-end md:self-auto relative z-10 ml-auto';
+                }
             }
         }
 
