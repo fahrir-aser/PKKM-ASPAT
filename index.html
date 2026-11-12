@@ -401,26 +401,6 @@
             </div>
         </div>
 
-        <!-- NAVIGATION TABS BAR -->
-        <div id="navigationTabs" class="bg-white rounded-xl px-4 py-3 shadow-xs border border-slate-200/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-sm font-medium mb-6">
-            <div class="flex items-center space-x-6 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0">
-                <button onclick="switchTab('dashboard')" id="tabDashboard" class="flex items-center space-x-2 text-brandGreen border-b-2 border-brandGreen pb-1 pt-1 font-bold transition-all whitespace-nowrap shrink-0">
-                    <i class="fa-solid fa-chart-line text-xs text-amber-500"></i>
-                    <span>Dashboard Penilaian</span>
-                </button>
-                <button onclick="switchTab('admin')" id="tabAdmin" class="flex items-center space-x-2 text-slate-500 hover:text-brandGreen pb-1 pt-1 transition-all hidden whitespace-nowrap shrink-0">
-                    <i class="fa-solid fa-gear text-xs"></i>
-                    <span>Admin Panel</span>
-                </button>
-            </div>
-            
-            <!-- Badge Indicator Periode Aktif -->
-            <div class="flex items-center space-x-2 bg-amber-50 border border-amber-300/80 px-3 py-1.5 rounded-lg text-xs font-bold text-amber-900 shadow-2xs w-full sm:w-auto justify-center sm:justify-start shrink-0">
-                <i class="fa-solid fa-calendar-check text-amber-600"></i>
-                <span class="whitespace-nowrap">Tahun Penilaian Aktif: <span id="activePeriodBadge" class="text-brandGreen">2025/2026</span></span>
-            </div>
-        </div>
-
         <!-- ==================== VIEW 1: DASHBOARD UTAMA ==================== -->
         <main id="viewDashboard" class="space-y-6">
             <!-- Filter Dimensi PKKM & Pemilih Tahun Tampilan / Arsip -->
