@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Font: Inter & Playfair Display (Typography Serif Modern High Contrast) -->
+    <!-- Google Font: Inter & Playfair Display -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
     <!-- SheetJS for Excel Export -->
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
@@ -18,16 +18,16 @@
                 extend: {
                     colors: {
                         brandGreen: {
-                            DEFAULT: '#047857', // Emerald 700
-                            dark: '#065f46',    // Emerald 800
-                            light: '#ecfdf5',   // Emerald 50
-                            soft: '#d1fae5'     // Emerald 100
+                            DEFAULT: '#047857',
+                            dark: '#065f46',
+                            light: '#ecfdf5',
+                            soft: '#d1fae5'
                         },
                         brandGold: {
-                            DEFAULT: '#d97706', // Amber 600
-                            hover: '#b45309',   // Amber 700
-                            light: '#fef3c7',   // Amber 100
-                            accent: '#f59e0b'   // Amber 500
+                            DEFAULT: '#d97706',
+                            hover: '#b45309',
+                            light: '#fef3c7',
+                            accent: '#f59e0b'
                         },
                         appBg: '#f4f7f6'
                     },
@@ -44,10 +44,6 @@
             font-family: 'Inter', sans-serif;
             background-color: #f4f7f6;
             color: #334155;
-        }
-        .font-modern-title {
-            font-family: 'Cinzel', 'Playfair Display', serif;
-            letter-spacing: 0.05em;
         }
         ::-webkit-scrollbar {
             width: 6px;
@@ -67,32 +63,24 @@
 </head>
 <body class="min-h-screen pb-12">
 
-    <!-- ==================== MODAL POPUP WELCOME/DOA LOGIN (TEMA PURPLE NIGHT GLASS) ==================== -->
+    <!-- ==================== MODAL POPUP WELCOME/DOA LOGIN ==================== -->
     <div id="welcomeGreetingModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 z-50 hidden overflow-y-auto">
-        <div class="max-w-md w-full my-auto bg-slate-900/40 backdrop-blur-xl rounded-3xl shadow-[0_0_40px_rgba(168,85,247,0.35)] border border-purple-400/30 p-5 sm:p-6 text-center space-y-4 animate-in fade-in zoom-in duration-300 relative overflow-hidden text-white max-h-[90vh] overflow-y-auto">
-            <!-- Glassmorphism Background Stars & Gradient Effects -->
-            <div class="absolute -top-16 -right-16 w-36 h-36 bg-purple-500/30 rounded-full blur-2xl pointer-events-none"></div>
-            <div class="absolute -bottom-16 -left-16 w-36 h-36 bg-indigo-500/30 rounded-full blur-2xl pointer-events-none"></div>
-
+        <div class="max-w-md w-full my-auto bg-slate-900/40 backdrop-blur-xl rounded-3xl shadow-[0_0_40px_rgba(168,85,247,0.35)] border border-purple-400/30 p-5 sm:p-6 text-center space-y-4 relative overflow-hidden text-white max-h-[90vh] overflow-y-auto">
             <div class="w-14 h-14 sm:w-16 sm:h-16 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-amber-300 text-2xl sm:text-3xl mx-auto shadow-inner border border-purple-300/40 relative z-10">
                 <i class="fa-solid fa-hands-praying"></i>
             </div>
-            
             <div class="space-y-2 relative z-10">
                 <h3 id="welcomeGreetingUser" class="text-sm sm:text-base font-black text-purple-200 uppercase tracking-wide drop-shadow-sm">
                     Selamat Datang
                 </h3>
                 <div class="bg-purple-950/40 backdrop-blur-sm p-3.5 sm:p-4 rounded-2xl border border-purple-400/30 shadow-inner space-y-1.5">
-                    <p class="text-xs sm:text-sm font-black text-amber-300 tracking-wider drop-shadow-xs">
-                        ASSALAMU ALAIKUM
-                    </p>
+                    <p class="text-xs sm:text-sm font-black text-amber-300 tracking-wider">ASSALAMU ALAIKUM</p>
                     <p class="text-[11px] sm:text-xs font-semibold text-purple-100 leading-relaxed">
                         Selamat mengerjakan, Semoga Senantiasa diberikan kesehatan Oleh ALLAH SWT. Aminnn... 🤲
                     </p>
                 </div>
             </div>
-
-            <button onclick="closeModal('welcomeGreetingModal')" class="w-full bg-white text-purple-950 hover:bg-purple-100 font-extrabold py-3 px-4 rounded-2xl text-xs sm:text-sm shadow-xl transition-all border border-white/60 relative z-10 hover:scale-[1.02] active:scale-95">
+            <button onclick="closeModal('welcomeGreetingModal')" class="w-full bg-white text-purple-950 hover:bg-purple-100 font-extrabold py-3 px-4 rounded-2xl text-xs sm:text-sm shadow-xl transition-all border border-white/60 relative z-10">
                 Tutup / Lanjutkan
             </button>
         </div>
@@ -100,7 +88,7 @@
 
     <!-- ==================== MODAL ALERT DOKUMEN BELUM DIUNGGAH ==================== -->
     <div id="missingDocModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 z-50 hidden overflow-y-auto">
-        <div class="max-w-md w-full my-auto bg-white rounded-3xl shadow-2xl border-2 border-amber-300 p-5 sm:p-6 text-center space-y-4 animate-in fade-in zoom-in duration-200 max-h-[90vh] overflow-y-auto">
+        <div class="max-w-md w-full my-auto bg-white rounded-3xl shadow-2xl border-2 border-amber-300 p-5 sm:p-6 text-center space-y-4">
             <div class="w-14 h-14 sm:w-16 sm:h-16 bg-amber-100 rounded-full flex items-center justify-center text-amber-600 text-2xl sm:text-3xl mx-auto shadow-inner border border-amber-200">
                 <i class="fa-solid fa-triangle-exclamation"></i>
             </div>
@@ -116,9 +104,9 @@
         </div>
     </div>
 
-    <!-- ==================== MODAL NOTIFIKASI SISTEM (PENGGANTI ALERT BROWSER) ==================== -->
+    <!-- ==================== MODAL NOTIFIKASI SISTEM ==================== -->
     <div id="systemNoticeModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 z-50 hidden overflow-y-auto">
-        <div class="max-w-md w-full my-auto bg-white rounded-3xl shadow-2xl border-2 border-emerald-400 p-5 sm:p-6 text-center space-y-4 animate-in fade-in zoom-in duration-200">
+        <div class="max-w-md w-full my-auto bg-white rounded-3xl shadow-2xl border-2 border-emerald-400 p-5 sm:p-6 text-center space-y-4">
             <div class="w-14 h-14 bg-emerald-100 rounded-full flex items-center justify-center text-brandGreen text-2xl mx-auto shadow-inner border border-emerald-200">
                 <i class="fa-solid fa-circle-info"></i>
             </div>
@@ -136,8 +124,7 @@
 
     <!-- ==================== MODAL UPLOAD BUKTI KINERJA ==================== -->
     <div id="uploadDocModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 z-50 hidden overflow-y-auto">
-        <div class="max-w-lg w-full my-auto bg-white rounded-3xl shadow-2xl border-2 border-amber-400 overflow-hidden space-y-0 animate-in fade-in zoom-in duration-200 max-h-[90vh] flex flex-col">
-            <!-- Modal Header dengan Kombinasi Hijau dan Emas -->
+        <div class="max-w-lg w-full my-auto bg-white rounded-3xl shadow-2xl border-2 border-amber-400 overflow-hidden space-y-0 max-h-[90vh] flex flex-col">
             <div class="flex items-center justify-between px-5 py-3.5 sm:px-6 sm:py-4 bg-gradient-to-r from-emerald-800 via-brandGreen to-emerald-900 border-b border-amber-400 shrink-0">
                 <div class="flex items-center space-x-2 text-amber-300 font-extrabold text-base sm:text-lg">
                     <i class="fa-solid fa-cloud-arrow-up text-lg sm:text-xl text-amber-400"></i>
@@ -148,20 +135,17 @@
                 </button>
             </div>
 
-            <!-- Modal Content -->
             <div class="p-5 sm:p-6 space-y-4 sm:space-y-5 bg-white overflow-y-auto">
-                <!-- Info Indikator & Bukti -->
                 <div class="space-y-1.5 p-3 rounded-xl bg-amber-50/80 border border-amber-200/80">
                     <h3 id="uploadModalIndicatorTitle" class="font-bold text-emerald-900 text-xs sm:text-sm leading-snug">
-                        A.1.1.1 - Mampu mengembangkan struktur organisasi yang sesuai dengan kebutuhan program.
+                        Indikator
                     </h3>
                     <p id="uploadModalDocTitle" class="text-xs text-amber-900 font-semibold flex items-center space-x-1.5">
                         <i class="fa-solid fa-file-lines text-amber-600"></i>
-                        <span>Bukti: Bagan/struktur organisasi</span>
+                        <span>Bukti</span>
                     </p>
                 </div>
 
-                <!-- Tabs Pilihan Mode Upload (Kombinasi Hijau & Kuning) -->
                 <div class="grid grid-cols-2 gap-2 p-1 bg-slate-100 rounded-xl border border-slate-200">
                     <button id="tabUploadFileBtn" onclick="switchUploadTab('file')" class="py-2 px-3 rounded-lg text-xs font-extrabold transition-all bg-amber-500 hover:bg-amber-600 text-slate-900 shadow-xs flex items-center justify-center space-x-2 border border-amber-400">
                         <i class="fa-solid fa-file-arrow-up"></i>
@@ -173,58 +157,49 @@
                     </button>
                 </div>
 
-                <!-- Tab 1: Area Upload File (Drag and Drop) -->
                 <div id="uploadFileArea" class="space-y-3">
                     <div onclick="document.getElementById('fileInputHidden').click()" class="border-2 border-dashed border-amber-300 hover:border-emerald-600 rounded-2xl p-5 sm:p-7 text-center cursor-pointer bg-gradient-to-b from-amber-50/30 to-emerald-50/30 hover:from-amber-100/40 hover:to-emerald-100/40 transition-all space-y-2 sm:space-y-3">
                         <div class="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-tr from-brandGreen to-emerald-700 text-amber-300 rounded-full flex items-center justify-center text-xl sm:text-2xl mx-auto shadow-md border-2 border-amber-400">
                             <i class="fa-solid fa-cloud-arrow-up"></i>
                         </div>
                         <div class="space-y-1">
-                        <p id="fileSelectLabel" class="text-xs font-bold text-emerald-900">Klik untuk pilih file atau drag & drop di sini</p>
-                        <p class="text-[10px] sm:text-[11px] text-slate-500 font-medium">Format: PDF, DOC, JPG, PNG (Otomatis masuk Google Drive, Max: 10 MB)</p>
+                            <p id="fileSelectLabel" class="text-xs font-bold text-emerald-900">Klik untuk pilih file atau drag & drop di sini</p>
+                            <p class="text-[10px] sm:text-[11px] text-slate-500 font-medium">Format: PDF, DOC, JPG, PNG (Otomatis masuk Google Drive, Max: 10 MB)</p>
+                        </div>
+                        <input type="file" id="fileInputHidden" onchange="handleFileSelected(event)" class="hidden" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
                     </div>
-                    <input type="file" id="fileInputHidden" onchange="handleFileSelected(event)" class="hidden" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
                 </div>
-            </div>
 
-            <!-- Tab 2: Area Input Link Google Drive -->
-            <div id="uploadDriveArea" class="space-y-2 hidden">
-                <label class="block text-xs font-bold text-emerald-900">Tautan / URL Google Drive</label>
-                <div class="relative">
-                    <i class="fa-brands fa-google-drive absolute left-3.5 top-3 text-amber-600 text-xs"></i>
-                    <input type="url" id="driveUrlInput" placeholder="https://drive.google.com/file/d/..." class="w-full pl-9 pr-3 py-2.5 border border-amber-300 rounded-xl text-xs font-medium focus:ring-2 focus:ring-brandGreen outline-none bg-amber-50/30">
+                <div id="uploadDriveArea" class="space-y-2 hidden">
+                    <label class="block text-xs font-bold text-emerald-900">Tautan / URL Google Drive</label>
+                    <div class="relative">
+                        <i class="fa-brands fa-google-drive absolute left-3.5 top-3 text-amber-600 text-xs"></i>
+                        <input type="url" id="driveUrlInput" placeholder="https://drive.google.com/file/d/..." class="w-full pl-9 pr-3 py-2.5 border border-amber-300 rounded-xl text-xs font-medium focus:ring-2 focus:ring-brandGreen outline-none bg-amber-50/30">
+                    </div>
+                    <p class="text-[10px] text-slate-500 italic">Pastikan akses tautan Google Drive telah diubah menjadi "Siapa saja yang memiliki link".</p>
                 </div>
-                <p class="text-[10px] text-slate-500 italic">Pastikan akses tautan Google Drive telah diubah menjadi "Siapa saja yang memiliki link".</p>
-            </div>
 
-            <!-- Status Progress Upload ke Google Drive -->
-            <div id="uploadDriveLoading" class="hidden bg-emerald-50 border border-emerald-300 rounded-xl p-3 flex items-center justify-center space-x-2 text-xs font-bold text-emerald-800">
-                <i class="fa-solid fa-spinner fa-spin text-brandGreen text-sm"></i>
-                <span>Mengunggah file ke Google Drive & mencatat ke Google Sheet...</span>
-            </div>
+                <div id="uploadDriveLoading" class="hidden bg-emerald-50 border border-emerald-300 rounded-xl p-3 flex items-center justify-center space-x-2 text-xs font-bold text-emerald-800">
+                    <i class="fa-solid fa-spinner fa-spin text-brandGreen text-sm"></i>
+                    <span>Mengunggah file ke Google Drive & mencatat ke Google Sheet...</span>
+                </div>
 
-            <!-- Action Button (Kombinasi Hijau dengan Emas) -->
-            <button id="btnSaveUploadedDoc" onclick="saveUploadedDoc()" class="w-full bg-gradient-to-r from-brandGreen via-emerald-700 to-emerald-800 hover:from-brandGreen-dark hover:to-emerald-900 text-amber-300 font-extrabold py-3 px-4 rounded-xl text-xs sm:text-sm shadow-lg transition-all border border-amber-400/60 flex items-center justify-center space-x-2">
-                <i class="fa-solid fa-cloud-arrow-up text-amber-300"></i>
-                <span>Upload ke Drive & Simpan Database</span>
-            </button>
+                <button id="btnSaveUploadedDoc" onclick="saveUploadedDoc()" class="w-full bg-gradient-to-r from-brandGreen via-emerald-700 to-emerald-800 hover:from-brandGreen-dark hover:to-emerald-900 text-amber-300 font-extrabold py-3 px-4 rounded-xl text-xs sm:text-sm shadow-lg transition-all border border-amber-400/60 flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-cloud-arrow-up text-amber-300"></i>
+                    <span>Upload ke Drive & Simpan Database</span>
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- ==================== MODAL LOGIN POP-UP (GURU & ADMIN) ==================== -->
+    <!-- ==================== MODAL LOGIN POP-UP ==================== -->
     <div id="loginModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 z-50 hidden overflow-y-auto">
-        <!-- Background Decorative Galaxy / Mountain Silhouette Effect -->
         <div class="absolute inset-0 bg-gradient-to-b from-indigo-950 via-purple-900 to-fuchsia-950 opacity-90 pointer-events-none"></div>
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-500/20 via-transparent to-transparent pointer-events-none"></div>
-
-        <div class="max-w-md w-full my-auto bg-white/10 backdrop-blur-xl rounded-3xl shadow-[0_0_50px_rgba(168,85,247,0.3)] border border-white/20 overflow-hidden relative z-10 transition-all duration-300 max-h-[92vh] overflow-y-auto">
-            <!-- Close Button -->
+        <div class="max-w-md w-full my-auto bg-white/10 backdrop-blur-xl rounded-3xl shadow-[0_0_50px_rgba(168,85,247,0.3)] border border-white/20 overflow-hidden relative z-10 max-h-[92vh] overflow-y-auto">
             <button onclick="closeModal('loginModal')" class="absolute top-3.5 right-3.5 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 rounded-full w-8 h-8 flex items-center justify-center z-20 transition-all border border-white/10">
                 <i class="fa-solid fa-xmark text-sm"></i>
             </button>
 
-            <!-- Header Modal -->
             <div class="pt-6 sm:pt-8 pb-3 sm:pb-4 text-center text-white relative px-4">
                 <div class="w-12 h-12 sm:w-16 sm:h-16 bg-white/15 backdrop-blur-md rounded-2xl flex items-center justify-center text-purple-300 text-2xl sm:text-3xl mx-auto shadow-lg mb-2.5 border border-white/30">
                     <i class="fa-solid fa-user-check"></i>
@@ -235,12 +210,11 @@
                     <span class="text-purple-300">ASPAT</span>
                 </h2>
                 <p class="text-[11px] sm:text-xs text-purple-200/90 font-bold uppercase tracking-wide mt-1">MA. AS'ADIYAH PATTIRO</p>
-                <div class="mt-2.5 inline-block bg-purple-500/30 border border-purple-300/30 text-purple-100 text-[10px] font-bold px-3 py-0.5 rounded-full shadow-inner uppercase tracking-wider backdrop-blur-sm">
+                <div class="mt-2.5 inline-block bg-purple-500/30 border border-purple-300/30 text-purple-100 text-[10px] font-bold px-3 py-0.5 rounded-full uppercase tracking-wider">
                     Login Pengguna (Guru / Admin)
                 </div>
             </div>
 
-            <!-- Form Content -->
             <div class="p-5 sm:p-6 pt-1 space-y-4">
                 <div id="loginAlert" class="hidden bg-rose-500/20 backdrop-blur-md text-rose-200 p-2.5 rounded-2xl text-xs font-semibold border border-rose-400/30 flex items-center space-x-2">
                     <i class="fa-solid fa-circle-exclamation text-rose-400 text-sm"></i>
@@ -255,8 +229,7 @@
                             <i class="fa-solid fa-magnifying-glass absolute right-3.5 top-3 sm:top-3.5 text-purple-300/60 text-xs pointer-events-none"></i>
                         </div>
 
-                        <!-- POPUP / DROPDOWN SUGESTI PENCARIAN REALTIME -->
-                        <div id="rememberedAccountsDropdown" class="hidden absolute left-0 right-0 top-full mt-1.5 bg-slate-900/95 backdrop-blur-xl border border-purple-400/40 rounded-2xl shadow-2xl z-30 p-2 space-y-1 animate-in fade-in zoom-in-95 duration-150">
+                        <div id="rememberedAccountsDropdown" class="hidden absolute left-0 right-0 top-full mt-1.5 bg-slate-900/95 backdrop-blur-xl border border-purple-400/40 rounded-2xl shadow-2xl z-30 p-2 space-y-1">
                             <div class="px-2 py-1 text-[10px] font-bold text-amber-300 uppercase tracking-wider flex items-center justify-between border-b border-purple-500/20 pb-1 mb-1">
                                 <span class="flex items-center space-x-1">
                                     <i class="fa-solid fa-user-check text-amber-400"></i>
@@ -266,9 +239,7 @@
                                     <i class="fa-solid fa-xmark"></i>
                                 </button>
                             </div>
-                            <div id="rememberedAccountsDropdownList" class="max-h-40 overflow-y-auto space-y-1 pr-1">
-                                <!-- Injected JS Suggestion -->
-                            </div>
+                            <div id="rememberedAccountsDropdownList" class="max-h-40 overflow-y-auto space-y-1 pr-1"></div>
                         </div>
                     </div>
 
@@ -280,7 +251,6 @@
                         </div>
                     </div>
 
-                    <!-- Option Remember Me Switch -->
                     <div class="flex items-center justify-between text-xs text-purple-200/90 px-1 pt-0.5">
                         <label class="flex items-center space-x-2 cursor-pointer">
                             <input type="checkbox" id="rememberMeCheck" checked class="rounded text-purple-600 focus:ring-purple-400 h-3.5 w-3.5 accent-purple-500 cursor-pointer">
@@ -288,7 +258,7 @@
                         </label>
                     </div>
 
-                    <button type="submit" class="w-full mt-2 bg-white hover:bg-purple-100 text-purple-950 font-black py-2.5 sm:py-3 rounded-2xl text-xs sm:text-sm shadow-[0_0_20px_rgba(255,255,255,0.3)] flex items-center justify-center space-x-2 transition-all active:scale-[0.98] border border-white/50">
+                    <button type="submit" class="w-full mt-2 bg-white hover:bg-purple-100 text-purple-950 font-black py-2.5 sm:py-3 rounded-2xl text-xs sm:text-sm shadow-[0_0_20px_rgba(255,255,255,0.3)] flex items-center justify-center space-x-2 transition-all border border-white/50">
                         <i class="fa-solid fa-right-to-bracket text-purple-900"></i>
                         <span>Masuk ke Sistem</span>
                     </button>
@@ -300,19 +270,16 @@
     <!-- ==================== CONTAINER UTAMA APLIKASI ==================== -->
     <div id="appContainer" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
 
-        <!-- HEADER SECTION BRANDING (MENDUKUNG BANNER CUSTOM FULL-WIDTH) -->
+        <!-- HEADER SECTION BRANDING -->
         <header id="mainAppHeader" class="relative overflow-hidden rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center py-4 px-4 sm:px-6 gap-4 mb-4 border-b border-slate-200/60 transition-all bg-cover bg-center">
-            <!-- Overlay ringan hanya muncul saat banner aktif agar tombol kanan tetap terbaca jelas -->
             <div id="headerBannerOverlay" class="hidden absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/20 pointer-events-none"></div>
 
             <div id="defaultHeaderBranding" class="flex items-center space-x-3.5 sm:space-x-4 relative z-10">
-                <!-- DYNAMIC CUSTOM LOGO CONTAINER -->
                 <div id="headerLogoContainer" class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-brandGreen flex items-center justify-center text-amber-300 shadow-lg flex-shrink-0 border-2 border-amber-400 overflow-hidden transition-all p-0.5">
                     <i id="defaultTogaIcon" class="fa-solid fa-graduation-cap text-3xl sm:text-4xl"></i>
                     <img id="customHeaderLogoImg" src="" alt="Logo Madrasah" class="w-full h-full object-contain hidden rounded-xl">
                 </div>
                 <div>
-                    <!-- Judul Utama: PKKM DIGITAL ASPAT -->
                     <div class="flex items-center space-x-2">
                         <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black tracking-wider flex items-center space-x-1.5 font-['Cinzel',_'Playfair_Display',_serif] uppercase drop-shadow-xs">
                             <span class="text-emerald-800">PKKM</span>
@@ -320,8 +287,6 @@
                             <span class="text-emerald-800">ASPAT</span>
                         </h1>
                     </div>
-                    
-                    <!-- Sub-Header Kontras Tinggi: MA. AS'ADIYAH PATTIRO -->
                     <div class="mt-1.5 inline-block bg-[#FFFDF9] border border-amber-300/80 rounded-xl px-3.5 py-1 shadow-xs">
                         <p class="text-xs sm:text-sm font-black text-amber-800 tracking-wide uppercase">
                             MA. AS'ADIYAH PATTIRO
@@ -330,46 +295,39 @@
                 </div>
             </div>
 
-            <!-- Spacer agar tinggi header tetap proporsional saat teks default disembunyikan oleh Banner -->
             <div id="bannerHeightSpacer" class="hidden h-16 sm:h-20"></div>
 
-            <!-- Right Profile / Login Switcher -->
-            <div id="authHeader" class="flex items-center space-x-3 self-end md:self-auto relative z-10 ml-auto">
-                <!-- Content injected by JS -->
-            </div>
+            <div id="authHeader" class="flex items-center space-x-3 self-end md:self-auto relative z-10 ml-auto"></div>
         </header>
 
-        <!-- ==================== KARTU STATISTIK RINGKASAN DOKUMEN (REAL-TIME) ==================== -->
+        <!-- ==================== KARTU STATISTIK RINGKASAN DOKUMEN ==================== -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
-            <!-- 1. Total Indikator / Dokumen Bukti (Gradasi Biru Navy - Cyan) -->
-            <div class="bg-gradient-to-br from-slate-800 via-blue-900 to-cyan-700 rounded-2xl p-4 sm:p-5 shadow-md border-l-4 border-l-cyan-300 border border-cyan-500/40 flex items-center justify-between transition-all hover:shadow-lg hover:-translate-y-0.5 text-white">
+            <div class="bg-gradient-to-br from-slate-800 via-blue-900 to-cyan-700 rounded-2xl p-4 sm:p-5 shadow-md border-l-4 border-l-cyan-300 border border-cyan-500/40 flex items-center justify-between text-white">
                 <div class="space-y-1">
-                    <h3 id="statTotalDocs" class="text-3xl sm:text-4xl font-black text-white tracking-tight drop-shadow-xs">0</h3>
+                    <h3 id="statTotalDocs" class="text-3xl sm:text-4xl font-black text-white tracking-tight">0</h3>
                     <p class="text-xs font-extrabold text-cyan-100 uppercase tracking-wide">Total Bukti Dokumen</p>
                 </div>
-                <div class="w-12 h-12 rounded-2xl bg-white/15 backdrop-blur-xs border border-white/25 flex items-center justify-center text-cyan-200 text-xl shrink-0 shadow-inner">
+                <div class="w-12 h-12 rounded-2xl bg-white/15 backdrop-blur-xs border border-white/25 flex items-center justify-center text-cyan-200 text-xl shrink-0">
                     <i class="fa-solid fa-folder-open"></i>
                 </div>
             </div>
 
-            <!-- 2. Sudah Diupload (Gradasi Hijau Emerald - Teal) -->
-            <div class="bg-gradient-to-br from-emerald-800 via-emerald-700 to-teal-600 rounded-2xl p-4 sm:p-5 shadow-md border-l-4 border-l-amber-300 border border-emerald-400/40 flex items-center justify-between transition-all hover:shadow-lg hover:-translate-y-0.5 text-white">
+            <div class="bg-gradient-to-br from-emerald-800 via-emerald-700 to-teal-600 rounded-2xl p-4 sm:p-5 shadow-md border-l-4 border-l-amber-300 border border-emerald-400/40 flex items-center justify-between text-white">
                 <div class="space-y-1">
-                    <h3 id="statUploadedDocs" class="text-3xl sm:text-4xl font-black text-white tracking-tight drop-shadow-xs">0</h3>
+                    <h3 id="statUploadedDocs" class="text-3xl sm:text-4xl font-black text-white tracking-tight">0</h3>
                     <p class="text-xs font-extrabold text-emerald-100 uppercase tracking-wide">Sudah Diupload</p>
                 </div>
-                <div class="w-12 h-12 rounded-2xl bg-white/15 backdrop-blur-xs border border-white/25 flex items-center justify-center text-amber-300 text-xl shrink-0 shadow-inner">
+                <div class="w-12 h-12 rounded-2xl bg-white/15 backdrop-blur-xs border border-white/25 flex items-center justify-center text-amber-300 text-xl shrink-0">
                     <i class="fa-solid fa-circle-check"></i>
                 </div>
             </div>
 
-            <!-- 3. Belum Diupload (Gradasi Merah Rose - Crimson) -->
-            <div class="bg-gradient-to-br from-rose-800 via-rose-700 to-red-600 rounded-2xl p-4 sm:p-5 shadow-md border-l-4 border-l-amber-200 border border-rose-400/40 flex items-center justify-between transition-all hover:shadow-lg hover:-translate-y-0.5 text-white">
+            <div class="bg-gradient-to-br from-rose-800 via-rose-700 to-red-600 rounded-2xl p-4 sm:p-5 shadow-md border-l-4 border-l-amber-200 border border-rose-400/40 flex items-center justify-between text-white">
                 <div class="space-y-1">
-                    <h3 id="statPendingDocs" class="text-3xl sm:text-4xl font-black text-white tracking-tight drop-shadow-xs">0</h3>
+                    <h3 id="statPendingDocs" class="text-3xl sm:text-4xl font-black text-white tracking-tight">0</h3>
                     <p class="text-xs font-extrabold text-rose-100 uppercase tracking-wide">Belum Diupload</p>
                 </div>
-                <div class="w-12 h-12 rounded-2xl bg-white/15 backdrop-blur-xs border border-white/25 flex items-center justify-center text-rose-100 text-xl shrink-0 shadow-inner">
+                <div class="w-12 h-12 rounded-2xl bg-white/15 backdrop-blur-xs border border-white/25 flex items-center justify-center text-rose-100 text-xl shrink-0">
                     <i class="fa-solid fa-clock-rotate-left"></i>
                 </div>
             </div>
@@ -388,7 +346,6 @@
                 </button>
             </div>
             
-            <!-- Badge Indicator Periode Aktif & Status Koneksi Cloud -->
             <div class="flex flex-wrap items-center gap-2 w-full sm:w-auto justify-center sm:justify-end shrink-0">
                 <div id="cloudSyncStatusBadge" class="flex items-center space-x-1.5 bg-slate-100 border border-slate-300 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 shadow-2xs">
                     <i class="fa-solid fa-database text-slate-500"></i>
@@ -403,7 +360,6 @@
 
         <!-- ==================== VIEW 1: DASHBOARD UTAMA ==================== -->
         <main id="viewDashboard" class="space-y-6">
-            <!-- Filter Dimensi PKKM & Pemilih Tahun Tampilan / Arsip -->
             <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-xs border border-slate-200/90 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
                 <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 w-full lg:w-auto">
                     <div class="flex items-center space-x-2 w-full sm:w-auto">
@@ -418,7 +374,6 @@
                         </select>
                     </div>
 
-                    <!-- Pemilih Tahun Tampilan / Arsip (Bisa diakses Guru, Pengawas, Admin) -->
                     <div class="flex items-center space-x-2 w-full sm:w-auto">
                         <label class="text-xs font-bold text-slate-700 whitespace-nowrap uppercase tracking-wider">Tahun Tampilan:</label>
                         <select id="dashboardPeriodSelect" onchange="changeViewedPeriod(this.value)" class="w-full sm:w-56 px-3 py-2 border border-amber-400 rounded-xl outline-none font-extrabold text-xs text-amber-950 bg-amber-50/70 focus:ring-2 focus:ring-amber-500">
@@ -430,23 +385,16 @@
                     </div>
                 </div>
 
-                <!-- Banner Status Mode: Aktif vs Arsip (Baca Saja) -->
-                <div id="periodModeBanner" class="w-full lg:w-auto">
-                    <!-- Injected by JS -->
-                </div>
+                <div id="periodModeBanner" class="w-full lg:w-auto"></div>
             </div>
 
-            <!-- List Indicators Container -->
-            <div id="dashboardIndicatorsContainer" class="space-y-4">
-                <!-- Injected JS -->
-            </div>
+            <div id="dashboardIndicatorsContainer" class="space-y-4"></div>
         </main>
 
         <!-- ==================== VIEW 2: PANEL ADMIN ==================== -->
         <main id="viewAdmin" class="space-y-6 hidden">
             <!-- 0. PENGATURAN PERIODE & LOGO MADRASAH -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                <!-- Pengaturan Periode -->
                 <div class="border border-amber-300/80 bg-gradient-to-r from-amber-50/90 to-amber-100/40 rounded-2xl p-4 sm:p-5 space-y-3 shadow-xs flex flex-col justify-between overflow-hidden">
                     <div class="space-y-2.5">
                         <div class="flex items-center space-x-2 text-amber-900 font-extrabold text-sm sm:text-base">
@@ -468,7 +416,6 @@
                     </p>
                 </div>
 
-                <!-- Pengaturan Logo Madrasah Custom -->
                 <div class="border border-emerald-300/80 bg-gradient-to-r from-emerald-50/90 to-emerald-100/40 rounded-2xl p-4 sm:p-5 space-y-3 shadow-xs">
                     <div class="flex items-center space-x-2 text-emerald-950 font-extrabold text-sm sm:text-base">
                         <i class="fa-solid fa-image text-emerald-700 text-lg"></i>
@@ -477,15 +424,12 @@
                     <p class="text-xs text-emerald-800 font-medium">
                         Unggah logo instansi/madrasah Anda untuk menggantikan ikon topi toga default di header sebelah kiri.
                     </p>
-                    
                     <div class="flex flex-col sm:flex-row items-center gap-3 pt-1">
                         <input type="file" id="logoFileInput" accept="image/*" onchange="handleCustomLogoUpload(event)" class="hidden">
-                        
                         <button onclick="document.getElementById('logoFileInput').click()" class="w-full sm:w-auto bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2 px-3.5 rounded-xl text-xs shadow-xs transition-all flex items-center justify-center space-x-2 border border-emerald-600">
                             <i class="fa-solid fa-upload text-amber-300"></i>
                             <span>Upload Logo Baru</span>
                         </button>
-
                         <button onclick="resetHeaderLogo()" class="w-full sm:w-auto bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-2 px-3.5 rounded-xl text-xs shadow-xs transition-all flex items-center justify-center space-x-1.5">
                             <i class="fa-solid fa-rotate-left"></i>
                             <span>Reset Logo Toga Default</span>
@@ -494,7 +438,7 @@
                 </div>
             </div>
 
-            <!-- PENGATURAN BANNER HEADER FULL-WIDTH (CANVA 2400x280) -->
+            <!-- PENGATURAN BANNER HEADER FULL-WIDTH -->
             <div class="border border-cyan-300/80 bg-gradient-to-r from-cyan-50/90 to-emerald-50/50 rounded-2xl p-4 sm:p-5 space-y-3 shadow-xs">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                     <div class="flex items-center space-x-2 text-slate-900 font-extrabold text-sm sm:text-base">
@@ -545,11 +489,11 @@
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-700 mb-1">2. ID Folder Google Drive (Penyimpanan File/Gambar)</label>
-                        <input type="text" id="googleDriveFolderIdInput" placeholder="Contoh: 1A2b3C4d5E6f7G8h9I0j..." class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs font-mono bg-white focus:ring-2 focus:ring-brandGreen outline-none">
+                        <input type="text" id="googleDriveFolderIdInput" placeholder="1OEtCPLR2WSFYeyQ0xU55mkw5TIX_2pjV" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs font-mono bg-white focus:ring-2 focus:ring-brandGreen outline-none">
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-700 mb-1">3. ID Google Sheet (Database Multi-Tab)</label>
-                        <input type="text" id="googleSheetIdInput" placeholder="Contoh: 1XyZ987654321AbCdEfG..." class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs font-mono bg-white focus:ring-2 focus:ring-brandGreen outline-none">
+                        <input type="text" id="googleSheetIdInput" placeholder="1-X9GTrddW4PrPzFFiRsSH2AxzJ9WoAbk8PFywFb5H1g" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs font-mono bg-white focus:ring-2 focus:ring-brandGreen outline-none">
                     </div>
                 </div>
 
@@ -582,7 +526,6 @@
                     </button>
                 </div>
 
-                <!-- Form Tambah User -->
                 <form onsubmit="handleCreateUser(event)" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
                     <input type="text" id="newUserName" placeholder="Nama Lengkap & Gelar" required class="px-3 py-2 border border-slate-300 rounded-xl text-xs outline-none focus:ring-2 focus:ring-brandGreen">
                     <input type="email" id="newUserEmail" placeholder="email@aser.sch.id" required class="px-3 py-2 border border-slate-300 rounded-xl text-xs outline-none focus:ring-2 focus:ring-brandGreen">
@@ -599,7 +542,6 @@
                     </div>
                 </form>
 
-                <!-- Tabel User -->
                 <div class="overflow-x-auto rounded-xl border border-slate-200">
                     <table class="w-full text-left text-xs border-collapse">
                         <thead>
@@ -611,9 +553,7 @@
                                 <th class="py-3 px-4 text-center">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody id="userTableBody" class="divide-y divide-slate-100 font-medium text-slate-700">
-                            <!-- Injected JS -->
-                        </tbody>
+                        <tbody id="userTableBody" class="divide-y divide-slate-100 font-medium text-slate-700"></tbody>
                     </table>
                 </div>
             </div>
@@ -643,20 +583,14 @@
                     <span>Centang atau uncheck nama di bawah ini secara otomatis tersimpan secara real-time dan langsung memperbarui tampilan Beranda.</span>
                 </p>
 
-                <!-- Container Penugasan Checkbox -->
-                <div class="space-y-4" id="adminAssignmentsContainer">
-                    <!-- Injected JS -->
-                </div>
+                <div class="space-y-4" id="adminAssignmentsContainer"></div>
             </div>
         </main>
     </div>
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // GLOBAL STATE & VARIABLES INITIALIZATION
-        // activePeriod = Tahun Penilaian Aktif yang ditetapkan oleh Admin
         let activePeriod = localStorage.getItem('pkkm_active_period') || '2025/2026';
-        // viewedPeriod = Tahun yang sedang dilihat pengguna di Dashboard (bisa Tahun Aktif atau Tahun Arsip)
         let viewedPeriod = activePeriod;
         let customLogoData = localStorage.getItem('pkkm_custom_logo_data') || '';
         let customBannerData = localStorage.getItem('pkkm_custom_banner_data') || '';
@@ -664,1179 +598,125 @@
         let currentUser = null;
         let autoCloseGreetingTimer = null;
 
-        // State Modal Upload Temp
         let currentUploadDocId = null;
         let currentUploadDocTitle = '';
         let currentUploadTab = 'file';
         let selectedFileMockUrl = '';
         let selectedFileMeta = null;
 
-        // KONFIGURASI GOOGLE DRIVE & GOOGLE SHEETS (CODE.GS)
+        // KONFIGURASI GOOGLE DRIVE & GOOGLE SHEETS (ID Folder sudah diperbaiki dengan huruf kapital 'I')
         const DEFAULT_CLOUD_CONFIG = {
             gasUrl: 'https://script.google.com/macros/s/AKfycbwcZdPwYNLekp2iMZQhG3IC5LbIoMLEyi53I6K1bk8k8qJRpEnIBoupolcziRd3Q6Fv/exec',
-            driveFolderId: '1OEtCPLR2WSFYeyQ0xU55mkw5TlX_2pjV',
+            driveFolderId: '1OEtCPLR2WSFYeyQ0xU55mkw5TIX_2pjV',
             sheetId: '1-X9GTrddW4PrPzFFiRsSH2AxzJ9WoAbk8PFywFb5H1g'
         };
         let savedCloudConfig = JSON.parse(localStorage.getItem('pkkm_google_cloud_config')) || {};
         let googleCloudConfig = {
             gasUrl: savedCloudConfig.gasUrl || DEFAULT_CLOUD_CONFIG.gasUrl,
-            driveFolderId: savedCloudConfig.driveFolderId || DEFAULT_CLOUD_CONFIG.driveFolderId,
+            driveFolderId: (savedCloudConfig.driveFolderId && savedCloudConfig.driveFolderId !== '1OEtCPLR2WSFYeyQ0xU55mkw5TlX_2pjV') ? savedCloudConfig.driveFolderId : DEFAULT_CLOUD_CONFIG.driveFolderId,
             sheetId: savedCloudConfig.sheetId || DEFAULT_CLOUD_CONFIG.sheetId
         };
+        localStorage.setItem('pkkm_google_cloud_config', JSON.stringify(googleCloudConfig));
 
-        // Helper Notifikasi Sistem (Pengganti alert browser)
+        const DEFAULT_USERS = [
+            { id: 1, name: 'Fahrir, S.Pd', email: 'fahrir@aser.com', pass: '123123', role: 'ADMIN' },
+            { id: 2, name: 'Kepala Madrasah', email: 'kamad@aser.sch.id', pass: '123456', role: 'GURU' }
+        ];
+        let usersList = JSON.parse(localStorage.getItem('pkkm_users_list')) || DEFAULT_USERS;
+        let savedLoginAccounts = JSON.parse(localStorage.getItem('pkkm_saved_login_accounts')) || [];
+        let allPeriodsAssignments = JSON.parse(localStorage.getItem('pkkm_all_assignments')) || {};
+        let assignments = allPeriodsAssignments[activePeriod] || {};
+        let allPeriodsDocLinks = JSON.parse(localStorage.getItem('pkkm_all_doc_links')) || {};
+        let uploadedDocLinks = allPeriodsDocLinks[viewedPeriod] || {};
+
+        const MASTER_INDICATORS = [
+            {
+                dimensi: 'A',
+                code: 'A.1.1.1',
+                title: 'A.1.1.1 - Mampu mengembangkan struktur organisasi yang sesuai dengan kebutuhan program.',
+                docs: [
+                    { id: 'DOC_A111_1', title: 'Bagan/struktur organisasi madrasah' },
+                    { id: 'DOC_A111_2', title: 'Notulen rapat penyusunan struktur organisasi' },
+                    { id: 'DOC_A111_3', title: 'SK Pembagian Tugas Guru dan Tenaga Kependidikan' }
+                ]
+            },
+            {
+                dimensi: 'A',
+                code: 'A.1.1.2',
+                title: 'A.1.1.2 - Mampu menempatkan personalia yang sesuai dengan kebutuhan.',
+                docs: [
+                    { id: 'DOC_A112_1', title: 'Uraian tugas (Job Description) masing-masing personalia' },
+                    { id: 'DOC_A112_2', title: 'Dokumen analisis kebutuhan pendidik dan tenaga kependidikan' }
+                ]
+            },
+            {
+                dimensi: 'B',
+                code: 'B.1.1.1',
+                title: 'B.1.1.1 - Mampu menyusun perencanaan madrasah untuk berbagai tingkatan perencanaan.',
+                docs: [
+                    { id: 'DOC_B111_1', title: 'Dokumen RKJM (Rencana Kerja Jangka Menengah) 4 Tahunan' },
+                    { id: 'DOC_B111_2', title: 'Dokumen RKT (Rencana Kerja Tahunan) dan RKAM' }
+                ]
+            },
+            {
+                dimensi: 'C',
+                code: 'C.1.1.1',
+                title: 'C.1.1.1 - Menciptakan inovasi yang bermanfaat bagi pengembangan madrasah.',
+                docs: [
+                    { id: 'DOC_C111_1', title: 'Program kerja pengembangan inovasi dan kewirausahaan madrasah' },
+                    { id: 'DOC_C111_2', title: 'Dokumentasi hasil karya inovasi pembelajaran / manajemen' }
+                ]
+            },
+            {
+                dimensi: 'D',
+                code: 'D.1.1.1',
+                title: 'D.1.1.1 - Menyusun program supervisi akademik dalam rangka peningkatan profesionalisme guru.',
+                docs: [
+                    { id: 'DOC_D111_1', title: 'Program dan jadwal supervisi akademik guru' },
+                    { id: 'DOC_D111_2', title: 'Instrumen supervisi perangkat dan pelaksanaan pembelajaran' }
+                ]
+            },
+            {
+                dimensi: 'E',
+                code: 'E.1.1.1',
+                title: 'E.1.1.1 - Prestasi peserta didik dan pendidik di tingkat kabupaten, provinsi, maupun nasional.',
+                docs: [
+                    { id: 'DOC_E111_1', title: 'Rekapitulasi piagam/sertifikat prestasi siswa dan guru' },
+                    { id: 'DOC_E111_2', title: 'Laporan capaian hasil ujian dan kelulusan peserta didik' }
+                ]
+            }
+        ];
+
+        function normalizeName(str) {
+            return String(str || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+        }
+
+        function maskPassword(pass) {
+            return '•'.repeat(Math.max(6, String(pass || '').length));
+        }
+
         function showSystemNotice(message) {
             const msgEl = document.getElementById('systemNoticeMessage');
             if (msgEl) msgEl.innerText = message;
             openModal('systemNoticeModal');
         }
 
-        // Helper sederhana enkripsi/desambiguasi privasi password
-        function maskPassword(pass) {
-            return '••••••••';
-        }
-
-        // Helper normalisasi nama agar pencocokan antara Admin & Guru 100% akurat
-        function normalizeName(name) {
-            return (name || '').toLowerCase().replace(/[.,]/g, '').replace(/\s+/g, ' ').trim();
-        }
-
-        // AKUN PERNAH LOGIN (REMEMBERED ACCOUNTS DI LOCALSTORAGE)
-        let savedLoginAccounts = JSON.parse(localStorage.getItem('pkkm_saved_login_accounts')) || [];
-
-        // DATA USER DEFAULT SYSTEM (Termasuk Admin Login & 23 Guru)
-        const DEFAULT_USERS_LIST = [
-            { id: 1, name: 'Fahrir, S.Pd', email: 'fahrir@aser.com', pass: '123123', role: 'ADMIN' },
-            { id: 2, name: 'Andi Irnawanti Nursak, S.Pd', email: 'irnawati@aser.sch.id', pass: 'Guru123', role: 'GURU' },
-            { id: 3, name: 'Eka Sasmita S.Sos', email: 'eka@aser.sch.id', pass: 'Guru123', role: 'GURU' },
-            { id: 4, name: 'Erwin S.Pd', email: 'erwin@aser.sch.id', pass: 'Guru123', role: 'GURU' },
-            { id: 5, name: 'Fahrir S.Pd', email: 'fahrir@aser.sch.id', pass: 'Guru123', role: 'GURU' },
-            { id: 6, name: 'Fajrul Ikhsan Alimuddin, S.Pd', email: 'ayyunk@aser.sch.id', pass: 'Guru123', role: 'GURU' },
-            { id: 7, name: 'Haerunnisa S.Pd.,M.Pd', email: 'haerunnisa@aser.sch.id', pass: 'Guru123', role: 'GURU' },
-            { id: 8, name: 'Halijah S.Pd', email: 'halijah@aser.sch.id', pass: 'Guru123', role: 'GURU' },
-            { id: 9, name: 'Kasmidar, S.Pd', email: 'kasmidar@aser.sch.id', pass: 'Guru123', role: 'GURU' },
-            { id: 10, name: 'Khusnul Inayah S.Pd', email: 'khusnul@aser.sch.id', pass: 'Guru123', role: 'GURU' },
-            { id: 11, name: 'Lisa Aswirayanti, SE', email: 'lisa@aser.sch.id', pass: 'Guru123', role: 'GURU' },
-            { id: 12, name: 'Lukman, SE', email: 'lukman@aser.sch.id', pass: 'Guru123', role: 'GURU' },
-            { id: 13, name: 'Marwati S.Pd M.Pd', email: 'marwati@aser.sch.id', pass: 'Guru123', role: 'GURU' },
-            { id: 14, name: 'Nur Syamsi, S.Pd.I', email: 'syamsi@aser.sch.id', pass: 'Guru123', role: 'GURU' },
-            { id: 15, name: 'Nur Asia S.Pd', email: 'nurasia@aser.sch.id', pass: 'Guru123456', role: 'GURU' },
-            { id: 16, name: 'Nur Faida Ulfa S.Kom', email: 'nurfaida@aser.sch.id', pass: 'Guru123', role: 'GURU' },
-            { id: 17, name: 'Nur Hikmah S.Pd', email: 'nurhikmah@aser.sch.id', pass: 'Guru123', role: 'GURU' },
-            { id: 18, name: 'Nur Syamsi, S.Hum', email: 'syamsihum@aser.sch.id', pass: 'Guru123', role: 'GURU' },
-            { id: 19, name: 'Nur Syamsi, S.Pd', email: 'nursyamsi@aser.sch.id', pass: 'Guru123', role: 'GURU' },
-            { id: 20, name: 'Nurul Faiqah Jamal S.Pd', email: 'faiqah@aser.sch.id', pass: 'Guru123', role: 'GURU' },
-            { id: 21, name: 'Panji, S.Pd', email: 'panji@aser.sch.id', pass: 'Guru123', role: 'GURU' },
-            { id: 22, name: 'St. Muawwafah, S.Pd', email: 'muawwafah@aser.sch.id', pass: 'GUru123', role: 'GURU' },
-            { id: 23, name: 'St. Syamsiah, S.Ag', email: 'syamsiah@aser.sch.id', pass: 'Guru123', role: 'GURU' },
-            { id: 24, name: 'Wahyuni, S.Pd', email: 'wahyuni@aser.sch.id', pass: 'Guru123', role: 'GURU' }
-        ];
-
-        let usersList = JSON.parse(localStorage.getItem('pkkm_users_list')) || DEFAULT_USERS_LIST;
-        localStorage.setItem('pkkm_users_list', JSON.stringify(usersList));
-
-        // STATE LINK DOKUMEN BERDASARKAN PERIODE
-        let allPeriodsDocLinks = JSON.parse(localStorage.getItem('pkkm_all_doc_links')) || {};
-        let uploadedDocLinks = allPeriodsDocLinks[viewedPeriod] || {};
-
-        // MASTER DATA INDIKATOR DAN BUKTI FISIK PKKM
-        const MASTER_INDICATORS = [
-            {
-                code: 'A111',
-                dimensi: 'A',
-                title: 'A.1.1.1 - Mampu mengembangkan struktur organisasi yang sesuai dengan kebutuhan program.',
-                docs: [
-                    { id: 'doc-A111-1', title: '1. Bagan/struktur organisasi' },
-                    { id: 'doc-A111-2', title: '2. Notulen rapat keputusan tentang penyusunan struktur organisasi' },
-                    { id: 'doc-A111-3', title: '3. Dokumen sosialisasi' },
-                    { id: 'doc-A111-4', title: '4. Daftar hadir' }
-                ]
-            },
-            {
-                code: 'A112',
-                dimensi: 'A',
-                title: 'A.1.1.2 - Mampu menempatkan personalia yang sesuai dengan kebutuhan.',
-                docs: [
-                    { id: 'doc-A112-1', title: '1. Dokumen penetapan/pengesahan susunan organisasi madrasah' },
-                    { id: 'doc-A112-2', title: '2. Rincian tugas setiap personil pada struktur organisasi madrasah' },
-                    { id: 'doc-A112-3', title: '3. Sertifikat' },
-                    { id: 'doc-A112-4', title: '4. SOP Personalia' }
-                ]
-            },
-            {
-                code: 'A113',
-                dimensi: 'A',
-                title: 'A.1.1.3 - Mampu mengembangkan pedoman dan prosedur kerja organisasi madrasah.',
-                docs: [
-                    { id: 'doc-A113-1', title: '1. Dokumen SOP madrasah' },
-                    { id: 'doc-A113-2', title: '2. Pedoman Sistem Informasi Madrasah' }
-                ]
-            },
-            {
-                code: 'A121',
-                dimensi: 'A',
-                title: 'A.1.2.1 - Mampu mengembangkan program baru untuk meningkatkan pencapaian target.',
-                docs: [
-                    { id: 'doc-A121-1', title: '1. Visi dan misi madrasah' },
-                    { id: 'doc-A121-2', title: '2. Data prestasi madrasah' },
-                    { id: 'doc-A121-3', title: '3. Data hasil UN 3 tahun terakhir' },
-                    { id: 'doc-A121-4', title: '4. Data alumni' },
-                    { id: 'doc-A121-5', title: '5. RKJM' }
-                ]
-            },
-            {
-                code: 'A122',
-                dimensi: 'A',
-                title: 'A.1.2.2 - Mampu membangun tim kerja yang efektif.',
-                docs: [
-                    { id: 'doc-A122-1', title: '1. Bagan/struktur organisasi' },
-                    { id: 'doc-A122-2', title: '2. SK' },
-                    { id: 'doc-A122-3', title: '3. Tugas dan fungsi' },
-                    { id: 'doc-A122-4', title: '4. Pedoman monitoring dan evaluasi kerja' },
-                    { id: 'doc-A122-5', title: '5. Pedoman reward dan punishment' }
-                ]
-            },
-            {
-                code: 'A123',
-                dimensi: 'A',
-                title: 'A.1.2.3 - Mampu menerapkan teknik pembaharuan dalam pengelolaan pembelajaran.',
-                docs: [
-                    { id: 'doc-A123-1', title: '1. Dokumen kurikulum' },
-                    { id: 'doc-A123-2', title: '2. Kalender pendidikan' },
-                    { id: 'doc-A123-3', title: '3. Perangkat pembelajaran' },
-                    { id: 'doc-A123-4', title: '4. Penilaian' },
-                    { id: 'doc-A123-5', title: '5. Peraturan akademik' },
-                    { id: 'doc-A123-6', title: '6. Notulen diskusi evaluasi rutin pembelajaran' }
-                ]
-            },
-            {
-                code: 'A124',
-                dimensi: 'A',
-                title: 'A.1.2.4 - Mampu mengembangkan potensi dan meningkatkan prestasi madrasah.',
-                docs: [
-                    { id: 'doc-A124-1', title: '1. Data prestasi madrasah 1 tahun terakhir' },
-                    { id: 'doc-A124-2', title: '2. Data hasil UN 1 tahun terakhir' },
-                    { id: 'doc-A124-3', title: '3. Dokumen akreditasi' },
-                    { id: 'doc-A124-4', title: '4. Program ekstrakurikuler' },
-                    { id: 'doc-A124-5', title: '5. Program unggulan madrasah' }
-                ]
-            },
-            {
-                code: 'A131',
-                dimensi: 'A',
-                title: 'A.1.3.1 - Merencanakan kerjasama dengan lembaga pemerintah, swasta dan masyarakat.',
-                docs: [
-                    { id: 'doc-A131-1', title: '1. SK komite madrasah' },
-                    { id: 'doc-A131-2', title: '2. AD/ART komite madrasah' },
-                    { id: 'doc-A131-3', title: '3. Program kerja komite madrasah' },
-                    { id: 'doc-A131-4', title: '4. Laporan kegiatan komite madrasah' },
-                    { id: 'doc-A131-5', title: '5. Dokumen tertulis kerja sama (MoU)' },
-                    { id: 'doc-A131-6', title: '6. Foto-foto' },
-                    { id: 'doc-A131-7', title: '7. Sertifikat/plakat kerja sama' },
-                    { id: 'doc-A131-8', title: '8. Laporan kegiatan' }
-                ]
-            },
-            {
-                code: 'A132',
-                dimensi: 'A',
-                title: 'A.1.3.2 - Melakukan pendekatan untuk mendapatkan dukungan dari lembaga.',
-                docs: [
-                    { id: 'doc-A132-1', title: '1. Program kegiatan kerjasama' },
-                    { id: 'doc-A132-2', title: '2. Foto kegiatan' },
-                    { id: 'doc-A132-3', title: '3. Jadwal kegiatan' },
-                    { id: 'doc-A132-4', title: '4. Laporan kegiatan' }
-                ]
-            },
-            {
-                code: 'A133',
-                dimensi: 'A',
-                title: 'A.1.3.3 - Memanfaatkan dan memelihara hubungan kerjasama.',
-                docs: [
-                    { id: 'doc-A133-1', title: '1. Laporan kegiatan kerja' },
-                    { id: 'doc-A133-2', title: '2. Laporan monitoring/evaluasi kegiatan' },
-                    { id: 'doc-A133-3', title: '3. Dokumentasi foto/video pelaksanaan kerjasama' }
-                ]
-            },
-            {
-                code: 'A141',
-                dimensi: 'A',
-                title: 'A.1.4.1 - Mengaplikasikan pengembangan kurikulum sesuai standar isi.',
-                docs: [
-                    { id: 'doc-A141-1', title: '1. Kurikulum' },
-                    { id: 'doc-A141-2', title: '2. Kalender pendidikan' },
-                    { id: 'doc-A141-3', title: '3. Perangkat pembelajaran' },
-                    { id: 'doc-A141-4', title: '4. Pedoman penilaian' },
-                    { id: 'doc-A141-5', title: '5. Peraturan akademik' },
-                    { id: 'doc-A141-6', title: '6. Buku kerja guru' },
-                    { id: 'doc-A141-7', title: '7. Dokumen rapat penyusunan kurikulum (daftar hadir, daftar peserta, foto)' }
-                ]
-            },
-            {
-                code: 'A142',
-                dimensi: 'A',
-                title: 'A.1.4.2 - Mengaplikasikan pengembangan proses pembelajaran sesuai standar proses.',
-                docs: [
-                    { id: 'doc-A142-1', title: '1. Dokumen pengembangan silabus' },
-                    { id: 'doc-A142-2', title: '2. RPP' },
-                    { id: 'doc-A142-3', title: '3. Struktur Kurikulum' },
-                    { id: 'doc-A142-4', title: '4. Pembagian jam mengajar' },
-                    { id: 'doc-A142-5', title: '5. Jadwal mengajar' },
-                    { id: 'doc-A142-6', title: '6. RPE' },
-                    { id: 'doc-A142-7', title: '7. Buku teks' },
-                    { id: 'doc-A142-8', title: '8. Jurnal mengajar guru' },
-                    { id: 'doc-A142-9', title: '9. Data siswa per kelas' },
-                    { id: 'doc-A142-10', title: '10. Dokumen supervisi (laporan pemantauan, laporan supervisi, laporan evaluasi, rencana tindak lanjut)' }
-                ]
-            },
-            {
-                code: 'A143',
-                dimensi: 'A',
-                title: 'A.1.4.3 - Mengaplikasikan sistem penilaian pembelajaran sesuai standar penilaian.',
-                docs: [
-                    { id: 'doc-A143-1', title: '1. Instrumen penilaian' },
-                    { id: 'doc-A143-2', title: '2. Kisi-kisi soal' },
-                    { id: 'doc-A143-3', title: '3. Kumpulan naskah soal' },
-                    { id: 'doc-A143-4', title: '4. Analisis butir soal' },
-                    { id: 'doc-A143-5', title: '5. Dokumen analisis hasil belajar siswa' },
-                    { id: 'doc-A143-6', title: '6. Laporan hasil belajar siswa' },
-                    { id: 'doc-A143-7', title: '7. Tindak lanjut hasil penilaian' },
-                    { id: 'doc-A143-8', title: '8. Dokumen pelaksanaan PAS' },
-                    { id: 'doc-A143-9', title: '9. Dokumen pelaksanaan PAT' }
-                ]
-            },
-            {
-                code: 'A144',
-                dimensi: 'A',
-                title: 'A.1.4.4 - Melaksanakan penjaminan mutu pencapaian standar kompetensi lulusan.',
-                docs: [
-                    { id: 'doc-A144-1', title: '1. Dokumen program kegiatan kesiswaan' },
-                    { id: 'doc-A144-2', title: '2. Laporan kegiatan kesiswaan' },
-                    { id: 'doc-A144-3', title: '3. Dokumentasi kegiatan kesiswaan' },
-                    { id: 'doc-A144-4', title: '4. Laporan kegiatan pembiasaan siswa' },
-                    { id: 'doc-A144-5', title: '5. Dokumen kegiatan literasi' },
-                    { id: 'doc-A144-6', title: '6. Data rata-rata hasil ujian 2 tahun terakhir' },
-                    { id: 'doc-A144-7', title: '7. Data prestasi akademik 2 tahun terakhir' },
-                    { id: 'doc-A144-8', title: '8. Data prestasi non akademik 2 tahun terakhir' }
-                ]
-            },
-            {
-                code: 'A151',
-                dimensi: 'A',
-                title: 'A.1.5.1 - Mampu mengelola laboratorium madrasah secara optimal.',
-                docs: [
-                    { id: 'doc-A151-1', title: '1. Luas sesuai standar' },
-                    { id: 'doc-A151-2', title: '2. Sarana pendukung laboratorium' },
-                    { id: 'doc-A151-3', title: '3. Program kerja laboratorium' },
-                    { id: 'doc-A151-4', title: '4. Jurnal dan laporan pengelolaan laboratorium' }
-                ]
-            },
-            {
-                code: 'A152',
-                dimensi: 'A',
-                title: 'A.1.5.2 - Mampu mengelola perpustakaan madrasah.',
-                docs: [
-                    { id: 'doc-A152-1', title: '1. Luas sesuai standar' },
-                    { id: 'doc-A152-2', title: '2. Sarana pendukung' },
-                    { id: 'doc-A152-3', title: '3. Daftar buku induk perpustakaan' },
-                    { id: 'doc-A152-4', title: '4. Laporan pengelolaan perpustakaan' },
-                    { id: 'doc-A152-5', title: '5. Program kerja perpustakaan' }
-                ]
-            },
-            {
-                code: 'A153',
-                dimensi: 'A',
-                title: 'A.1.5.3 - Mampu mengelola usaha madrasah.',
-                docs: [
-                    { id: 'doc-A153-1', title: '1. Data/laporan kegiatan usaha madrasah' },
-                    { id: 'doc-A153-2', title: '2. Dokumentasi kegiatan (foto/video)' }
-                ]
-            },
-            {
-                code: 'A154',
-                dimensi: 'A',
-                title: 'A.1.5.4 - Mampu mengelola koperasi madrasah.',
-                docs: [
-                    { id: 'doc-A154-1', title: '1. Instrumen hasil praktik pembelajaran' },
-                    { id: 'doc-A154-2', title: '2. Foto kegiatan praktik' },
-                    { id: 'doc-A154-3', title: '3. AD/ART koperasi' },
-                    { id: 'doc-A154-4', title: '4. Laporan RAT' }
-                ]
-            },
-            {
-                code: 'A161',
-                dimensi: 'A',
-                title: 'A.1.6.1 - Memanfaatkan TIK dalam manajemen madrasah.',
-                docs: [
-                    { id: 'doc-A161-1', title: '1. Fasilitas teknologi dan informasi' },
-                    { id: 'doc-A161-2', title: '2. Sumber daya informasi' },
-                    { id: 'doc-A161-3', title: '3. Website madrasah' },
-                    { id: 'doc-A161-4', title: '4. Pedoman sistem informasi madrasah' }
-                ]
-            },
-            {
-                code: 'A162',
-                dimensi: 'A',
-                title: 'A.1.6.2 - Memanfaatkan TIK dalam pembelajaran.',
-                docs: [
-                    { id: 'doc-A162-1', title: '1. Ketersediaan komputer' },
-                    { id: 'doc-A162-2', title: '2. Jaringan internet' },
-                    { id: 'doc-A162-3', title: '3. Website madrasah' },
-                    { id: 'doc-A162-4', title: '4. Alamat email madrasah' },
-                    { id: 'doc-A162-5', title: '5. Pemanfaatan TIK untuk pembelajaran (observasi/wawancara)' }
-                ]
-            },
-            {
-                code: 'A163',
-                dimensi: 'A',
-                title: 'A.1.6.3 - Memanfaatkan TIK dalam menjalin kerjasama.',
-                docs: [
-                    { id: 'doc-A163-1', title: '1. Pengelola SIM' },
-                    { id: 'doc-A163-2', title: '2. Fasilitas SIM' },
-                    { id: 'doc-A163-3', title: '3. Surat tugas pengelola SIM' },
-                    { id: 'doc-A163-4', title: '4. Pelaporan data dan informasi' },
-                    { id: 'doc-A163-5', title: '5. Program promosi' },
-                    { id: 'doc-A163-6', title: '6. Observasi dan wawancara' }
-                ]
-            },
-            {
-                code: 'A164',
-                dimensi: 'A',
-                title: 'A.1.6.4 - Memanfaatkan TIK dalam promosi program madrasah.',
-                docs: [
-                    { id: 'doc-A164-1', title: '1. Pengelola SIM' },
-                    { id: 'doc-A164-2', title: '2. Fasilitas SIM' },
-                    { id: 'doc-A164-3', title: '3. Surat tugas pengelola SIM' },
-                    { id: 'doc-A164-4', title: '4. Pelaporan data dan informasi' },
-                    { id: 'doc-A164-5', title: '5. Program informasi' },
-                    { id: 'doc-A164-6', title: '6. Observasi dan wawancara' }
-                ]
-            },
-            {
-                code: 'A171',
-                dimensi: 'A',
-                title: 'A.1.7.1 - Mampu mengembangkan sistem administrasi pengelolaan dengan TIK.',
-                docs: [
-                    { id: 'doc-A171-1', title: '1. Jumlah komputer dan LCD yang cukup' },
-                    { id: 'doc-A171-2', title: '2. Memiliki jaringan internet' },
-                    { id: 'doc-A171-3', title: '3. Memiliki web sekolah' },
-                    { id: 'doc-A171-4', title: '4. Memiliki email madrasah' },
-                    { id: 'doc-A171-5', title: '5. Laporan absensi elektronik' },
-                    { id: 'doc-A171-6', title: '6. Dokumen lain pemanfaatan TIK untuk administrasi madrasah' }
-                ]
-            },
-            {
-                code: 'A172',
-                dimensi: 'A',
-                title: 'A.1.7.2 - Mengelola administrasi pembelajaran dengan TIK.',
-                docs: [
-                    { id: 'doc-A172-1', title: '1. Jumlah komputer dan LCD yang cukup' },
-                    { id: 'doc-A172-2', title: '2. Memiliki jaringan internet' },
-                    { id: 'doc-A172-3', title: '3. Pemanfaatan TIK untuk pembelajaran (Edmodo, Google Classroom, dll)' },
-                    { id: 'doc-A172-4', title: '4. Pengelolaan penilaian secara online' }
-                ]
-            },
-            {
-                code: 'A173',
-                dimensi: 'A',
-                title: 'A.1.7.3 - Mampu mengembangkan sistem pengelolaan perpustakaan dengan TIK.',
-                docs: [
-                    { id: 'doc-A173-1', title: '1. Katalog' },
-                    { id: 'doc-A173-2', title: '2. BSE' },
-                    { id: 'doc-A173-3', title: '3. Akses internet' },
-                    { id: 'doc-A173-4', title: '4. Komputer' },
-                    { id: 'doc-A173-5', title: '5. Dokumen aplikasi layanan perpustakaan' }
-                ]
-            },
-            {
-                code: 'B2101',
-                dimensi: 'B',
-                title: 'B.2.10.1 - Menyusun standar kinerja program pendidikan.',
-                docs: [
-                    { id: 'doc-B2101-1', title: '1. Dokumen SKP yang terukur' }
-                ]
-            },
-            {
-                code: 'B2102',
-                dimensi: 'B',
-                title: 'B.2.10.2 - Melakukan monitoring dan evaluasi kinerja.',
-                docs: [
-                    { id: 'doc-B2102-1', title: '1. Dokumen pelaksanaan monitoring dan evaluasi' }
-                ]
-            },
-            {
-                code: 'B2103',
-                dimensi: 'B',
-                title: 'B.2.10.3 - Menyusun laporan sesuai standar pelaporan monev.',
-                docs: [
-                    { id: 'doc-B2103-1', title: '1. Dokumen laporan pelaksanaan monitoring dan evaluasi' }
-                ]
-            },
-            {
-                code: 'B2104',
-                dimensi: 'B',
-                title: 'B.2.10.4 - Merumuskan program tindak lanjut berdasarkan hasil evaluasi.',
-                docs: [
-                    { id: 'doc-B2104-1', title: '1. Dokumen laporan pelaksanaan monitoring dan evaluasi' }
-                ]
-            },
-            {
-                code: 'B211',
-                dimensi: 'B',
-                title: 'B.2.1.1 - Mampu mengembangkan RKJM, RKT/RKAM berdasarkan evaluasi 8 SNP.',
-                docs: [
-                    { id: 'doc-B211-1', title: '1. Dokumen Evaluasi diri madrasah' },
-                    { id: 'doc-B211-2', title: '2. Dokumen RKJM dan RKT berbasis SDM' }
-                ]
-            },
-            {
-                code: 'B212',
-                dimensi: 'B',
-                title: 'B.2.1.2 - Mampu merumuskan visi-misi sebagai arah pengembangan.',
-                docs: [
-                    { id: 'doc-B212-1', title: '1. Visi misi yang telah ditetapkan oleh Kamad' },
-                    { id: 'doc-B212-2', title: '2. Berita acara dan daftar hadir kegiatan perumusan/peninjauan kembali dan penetapan visi misi' }
-                ]
-            },
-            {
-                code: 'B213',
-                dimensi: 'B',
-                title: 'B.2.1.3 - Mampu menentukan strategi pencapaian tujuan madrasah.',
-                docs: [
-                    { id: 'doc-B213-1', title: '1. Program kerja' },
-                    { id: 'doc-B213-2', title: '2. RKJM dan RKTM' }
-                ]
-            },
-            {
-                code: 'B214',
-                dimensi: 'B',
-                title: 'B.2.1.4 - Mampu menyusun program dengan rencana evaluasi.',
-                docs: [
-                    { id: 'doc-B214-1', title: '1. RKJM dan RKTM' },
-                    { id: 'doc-B214-2', title: '2. Rencana/program evaluasi dan monitoring' }
-                ]
-            },
-            {
-                code: 'B221',
-                dimensi: 'B',
-                title: 'B.2.2.1 - Mampu memberi contoh berdisiplin.',
-                docs: [
-                    { id: 'doc-B221-1', title: '1. Daftar hadir elektronik kamad' },
-                    { id: 'doc-B221-2', title: '2. Daftar hadir pada kegiatan di madrasah' }
-                ]
-            },
-            {
-                code: 'B222',
-                dimensi: 'B',
-                title: 'B.2.2.2 - Mampu melaksanakan peraturan sesuai ketentuan.',
-                docs: [
-                    { id: 'doc-B222-1', title: '1. Wawancara dengan warga madrasah' },
-                    { id: 'doc-B222-2', title: '2. Laporan kehadiran' },
-                    { id: 'doc-B222-3', title: '3. Notulen rapat/briefing pengarahan kegiatan' }
-                ]
-            },
-            {
-                code: 'B223',
-                dimensi: 'B',
-                title: 'B.2.2.3 - Mampu menunjukkan keteladanan memanfaatkan sumber daya.',
-                docs: [
-                    { id: 'doc-B223-1', title: '1. Wawancara dengan warga madrasah' },
-                    { id: 'doc-B223-2', title: '2. Dokumen monitoring dan evaluasi pemanfaatan sumber belajar' },
-                    { id: 'doc-B223-3', title: '3. Notulensi rapat/diskusi pemanfaatan sumber belajar' }
-                ]
-            },
-            {
-                code: 'B224',
-                dimensi: 'B',
-                title: 'B.2.2.4 - Mampu menunjukkan kedisiplinan sebagai insan pembelajar.',
-                docs: [
-                    { id: 'doc-B224-1', title: '1. Koleksi buku referensi/ilmu pengetahuan' },
-                    { id: 'doc-B224-2', title: '2. Karya tulis yang diterbitkan atau tidak' },
-                    { id: 'doc-B224-3', title: '3. Majalah/koran madrasah' },
-                    { id: 'doc-B224-4', title: '4. Website madrasah' },
-                    { id: 'doc-B224-5', title: '5. Blog pribadi' }
-                ]
-            },
-            {
-                code: 'B231',
-                dimensi: 'B',
-                title: 'B.2.3.1 - Mampu menjadi contoh berbudaya mutu yang kompetitif.',
-                docs: [
-                    { id: 'doc-B231-1', title: '1. Peningkatan KKM' },
-                    { id: 'doc-B231-2', title: '2. Hasil UN' },
-                    { id: 'doc-B231-3', title: '3. Program keunggulan dan inovasi akademik/non akademik' },
-                    { id: 'doc-B231-4', title: '4. Data prestasi akademik dan non akademik' }
-                ]
-            },
-            {
-                code: 'B232',
-                dimensi: 'B',
-                title: 'B.2.3.2 - Mampu melengkapi sarana prasarana untuk suasana belajar kondusif.',
-                docs: [
-                    { id: 'doc-B232-1', title: '1. Observasi lingkungan madrasah (asri, bersih, rindang, aman, menyenangkan)' }
-                ]
-            },
-            {
-                code: 'B233',
-                dimensi: 'B',
-                title: 'B.2.3.3 - Mampu memfasilitasi kegiatan budaya baca dan tulis.',
-                docs: [
-                    { id: 'doc-B233-1', title: '1. Rencana dan laporan pelaksanaan kegiatan literasi' },
-                    { id: 'doc-B233-2', title: '2. Dokumen kegiatan pengembangan budaya baca' },
-                    { id: 'doc-B233-3', title: '3. Dokumen/pajangan hasil karya tulis siswa' },
-                    { id: 'doc-B233-4', title: '4. Data kunjungan perpustakaan' },
-                    { id: 'doc-B233-5', title: '5. Data peminjaman buku perpustakaan' },
-                    { id: 'doc-B233-6', title: '6. Observasi/wawancara' }
-                ]
-            },
-            {
-                code: 'B234',
-                dimensi: 'B',
-                title: 'B.2.3.4 - Mampu memfasilitasi kegiatan lomba akademik dan nonakademik.',
-                docs: [
-                    { id: 'doc-B234-1', title: '1. Dokumen penyelenggaraan kegiatan kompetisi tingkat madrasah' },
-                    { id: 'doc-B234-2', title: '2. Daftar perolehan piagam, penghargaan, piala, trofi perlombaan di semua jenjang' }
-                ]
-            },
-            {
-                code: 'B241',
-                dimensi: 'B',
-                title: 'B.2.4.1 - Mampu menyusun perencanaan pengembangan pendidik dan tendik.',
-                docs: [
-                    { id: 'doc-B241-1', title: '1. Program kerja kepala madrasah' },
-                    { id: 'doc-B241-2', title: '2. Laporan kegiatan workshop/pelatihan kompetensi guru' },
-                    { id: 'doc-B241-3', title: '3. Dokumentasi (foto/video) kegiatan workshop atau pelatihan guru' }
-                ]
-            },
-            {
-                code: 'B242',
-                dimensi: 'B',
-                title: 'B.2.4.2 - Mampu melakukan pembinaan berkala untuk meningkatkan mutu SDM.',
-                docs: [
-                    { id: 'doc-B242-1', title: '1. Buku/catatan pembinaan guru dan tendik' },
-                    { id: 'doc-B242-2', title: '2. Notulen dan daftar hadir rapat pembinaan' },
-                    { id: 'doc-B242-3', title: '3. Laporan kinerja kepala madrasah' }
-                ]
-            },
-            {
-                code: 'B243',
-                dimensi: 'B',
-                title: 'B.2.4.3 - Memfasilitasi guru dan staf untuk meningkatkan kompetensi.',
-                docs: [
-                    { id: 'doc-B243-1', title: '1. Buku/catatan pembinaan guru dan tendik' },
-                    { id: 'doc-B243-2', title: '2. Notulen dan daftar hadir rapat pembinaan' },
-                    { id: 'doc-B243-3', title: '3. Laporan kinerja kepala madrasah' }
-                ]
-            },
-            {
-                code: 'B244',
-                dimensi: 'B',
-                title: 'B.2.4.4 - Memantau penerapan hasil pelatihan dalam pekerjaan.',
-                docs: [
-                    { id: 'doc-B244-1', title: '1. Program pelatihan pengembangan profesi guru dan tendik' },
-                    { id: 'doc-B244-2', title: '2. Laporan pelaksanaan pelatihan pengembangan profesi guru dan tendik' }
-                ]
-            },
-            {
-                code: 'B251',
-                dimensi: 'B',
-                title: 'B.2.5.1 - Mampu mengelola fasilitas prasarana, perabot dan sarana.',
-                docs: [
-                    { id: 'doc-B251-1', title: '1. Buku Inventaris' },
-                    { id: 'doc-B251-2', title: '2. Buku pemeliharaan sarana dan prasarana' }
-                ]
-            },
-            {
-                code: 'B252',
-                dimensi: 'B',
-                title: 'B.2.5.2 - Mampu mengelola perpustakaan madrasah.',
-                docs: [
-                    { id: 'doc-B252-1', title: '1. Buku induk perpustakaan' },
-                    { id: 'doc-B252-2', title: '2. Buku data grafik layanan perpustakaan' }
-                ]
-            },
-            {
-                code: 'B253',
-                dimensi: 'B',
-                title: 'B.2.5.3 - Mampu mengelola laboratorium madrasah.',
-                docs: [
-                    { id: 'doc-B253-1', title: '1. Daftar inventaris laboratorium' },
-                    { id: 'doc-B253-2', title: '2. Buku/jurnal/data/grafik layanan laboratorium' }
-                ]
-            },
-            {
-                code: 'B254',
-                dimensi: 'B',
-                title: 'B.2.5.4 - Mampu mengelola fasilitas penunjang madrasah lainnya.',
-                docs: [
-                    { id: 'doc-B254-1', title: '1. Data fasilitas penunjang wirausaha yang dikelola oleh madrasah' }
-                ]
-            },
-            {
-                code: 'B261',
-                dimensi: 'B',
-                title: 'B.2.6.1 - Menyusun perencanaan penerimaan dan pengembangan kompetensi peserta didik.',
-                docs: [
-                    { id: 'doc-B261-1', title: '1. Dokumen program penerimaan peserta didik baru' },
-                    { id: 'doc-B261-2', title: '2. Brosur' },
-                    { id: 'doc-B261-3', title: '3. Data hasil analisis kemampuan peserta didik baru' },
-                    { id: 'doc-B261-4', title: '4. Hasil psikotes minat bakat peserta didik baru' }
-                ]
-            },
-            {
-                code: 'B262',
-                dimensi: 'B',
-                title: 'B.2.6.2 - Memiliki program pengembangan potensi diri dan prestasi.',
-                docs: [
-                    { id: 'doc-B262-1', title: '1. Program pengembangan diri peserta didik akademik dan non akademik' },
-                    { id: 'doc-B262-2', title: '2. Laporan pengembangan diri peserta didik akademik dan non akademik' }
-                ]
-            },
-            {
-                code: 'B263',
-                dimensi: 'B',
-                title: 'B.2.6.3 - Memfasilitasi kegiatan pembiasaan melalui penanaman nilai-nilai.',
-                docs: [
-                    { id: 'doc-B263-1', title: '1. Program kegiatan akademik dan non akademik dan laporan' },
-                    { id: 'doc-B263-2', title: '2. Laporan kegiatan pembiasaan diri peserta didik' },
-                    { id: 'doc-B263-3', title: '3. Dokumentasi kegiatan' }
-                ]
-            },
-            {
-                code: 'B264',
-                dimensi: 'B',
-                title: 'B.2.6.4 - Memfasilitasi kegiatan pengembangan diri bagi peserta didik, pendidik, tendik.',
-                docs: [
-                    { id: 'doc-B264-1', title: '1. Program kegiatan pengembangan diri' },
-                    { id: 'doc-B264-2', title: '2. Dokumen kegiatan' },
-                    { id: 'doc-B264-3', title: '3. Data prestasi siswa, guru, dan tendik' }
-                ]
-            },
-            {
-                code: 'B271',
-                dimensi: 'B',
-                title: 'B.2.7.1 - Mampu mengarahkan pengembangan KTSP dalam IHT, Workshop, MGMP.',
-                docs: [
-                    { id: 'doc-B271-1', title: '1. Dokumen kurikulum yang berlaku' },
-                    { id: 'doc-B271-2', title: '2. SK tim pengembangan kurikulum' },
-                    { id: 'doc-B271-3', title: '3. Dokumen penyusunan kurikulum (daftar hadir, berita acara, notulen)' },
-                    { id: 'doc-B271-4', title: '4. Laporan kegiatan workshop/rakor pengembangan kurikulum' }
-                ]
-            },
-            {
-                code: 'B272',
-                dimensi: 'B',
-                title: 'B.2.7.2 - Mampu mengendalikan pelaksanaan KTSP berlandaskan kalender pendidikan.',
-                docs: [
-                    { id: 'doc-B272-1', title: '1. Struktur kurikulum' },
-                    { id: 'doc-B272-2', title: '2. Jadwal pelajaran' },
-                    { id: 'doc-B272-3', title: '3. Daftar hadir guru' },
-                    { id: 'doc-B272-4', title: '4. Peraturan akademik' },
-                    { id: 'doc-B272-5', title: '5. Kalender pendidikan' },
-                    { id: 'doc-B272-6', title: '6. SK pembagian tugas mengajar' }
-                ]
-            },
-            {
-                code: 'B273',
-                dimensi: 'B',
-                title: 'B.2.7.3 - Memfasilitasi efektivitas tim kerja guru.',
-                docs: [
-                    { id: 'doc-B273-1', title: '1. Program KKG/MGMP di madrasah' },
-                    { id: 'doc-B273-2', title: '2. Laporan pelaksanaan KKG/MGMP' },
-                    { id: 'doc-B273-3', title: '3. Dokumentasi kegiatan (foto/video)' }
-                ]
-            },
-            {
-                code: 'B274',
-                dimensi: 'B',
-                title: 'B.2.7.4 - Mampu mengembangkan pelayanan belajar yang inovatif.',
-                docs: [
-                    { id: 'doc-B274-1', title: '1. Observasi kelas, studi dokumen, wawancara dengan siswa dan guru' },
-                    { id: 'doc-B274-2', title: '2. Menelaah ragam metode, media, dan sumber belajar yang digunakan dalam RPP' }
-                ]
-            },
-            {
-                code: 'B275',
-                dimensi: 'B',
-                title: 'B.2.7.5 - Memfasilitasi peserta didik dalam kolaborasi dan kompetisi.',
-                docs: [
-                    { id: 'doc-B275-1', title: '1. Program, laporan, dan dokumen kegiatan kesiswaan (akademik dan non akademik)' },
-                    { id: 'doc-B275-2', title: '2. Data prestasi akademik dan non akademik' },
-                    { id: 'doc-B275-3', title: '3. Dokumentasi kegiatan (laporan, foto, video)' }
-                ]
-            },
-            {
-                code: 'B281',
-                dimensi: 'B',
-                title: 'B.2.8.1 - Mampu merencanaan kebutuhan keuangan madrasah.',
-                docs: [
-                    { id: 'doc-B281-1', title: '1. RKJM dan RKTM' },
-                    { id: 'doc-B281-2', title: '2. Rencana anggaran' },
-                    { id: 'doc-B281-3', title: '3. Laporan keuangan' },
-                    { id: 'doc-B281-4', title: '4. Buku kas' }
-                ]
-            },
-            {
-                code: 'B282',
-                dimensi: 'B',
-                title: 'B.2.8.2 - Mampu mengupayakan sumber-sumber keuangan dari luar.',
-                docs: [
-                    { id: 'doc-B282-1', title: '1. RKJM dan RKTM' },
-                    { id: 'doc-B282-2', title: '2. Laporan keuangan' }
-                ]
-            },
-            {
-                code: 'B283',
-                dimensi: 'B',
-                title: 'B.2.8.3 - Mampu mengkoordinasikan pengelolaan keuangan sesuai peraturan.',
-                docs: [
-                    { id: 'doc-B283-1', title: '1. RKJM dan RKTM' },
-                    { id: 'doc-B283-2', title: '2. Laporan keuangan' }
-                ]
-            },
-            {
-                code: 'B284',
-                dimensi: 'B',
-                title: 'B.2.8.4 - Mampu membuat laporan dan evaluasi pengelolaan keuangan.',
-                docs: [
-                    { id: 'doc-B284-1', title: '1. RKJM dan RKTM' },
-                    { id: 'doc-B284-2', title: '2. Laporan keuangan' },
-                    { id: 'doc-B284-3', title: '3. Buku kas' }
-                ]
-            },
-            {
-                code: 'B291',
-                dimensi: 'B',
-                title: 'B.2.9.1 - Mampu mengelola administrasi surat masuk dan keluar.',
-                docs: [
-                    { id: 'doc-B291-1', title: '1. Dokumen surat masuk dan keluar' }
-                ]
-            },
-            {
-                code: 'B292',
-                dimensi: 'B',
-                title: 'B.2.9.2 - Mampu mengelola administrasi madrasah.',
-                docs: [
-                    { id: 'doc-B292-1', title: '1. Studi dokumen administrasi akademik, kesiswaan, sarana/prasarana, keuangan, dan hubungan madrasah dengan masyarakat' }
-                ]
-            },
-            {
-                code: 'B293',
-                dimensi: 'B',
-                title: 'B.2.9.3 - Mampu mengelola administrasi kearsipan.',
-                docs: [
-                    { id: 'doc-B293-1', title: '1. Administrasi madrasah' },
-                    { id: 'doc-B293-2', title: '2. Arsip administrasi' },
-                    { id: 'doc-B293-3', title: '3. SOP administrasi madrasah' }
-                ]
-            },
-            {
-                code: 'B294',
-                dimensi: 'B',
-                title: 'B.2.9.4 - Mampu mengelola administrasi akreditasi.',
-                docs: [
-                    { id: 'doc-B294-1', title: '1. Dokumen administrasi pemenuhan SNP madrasah' }
-                ]
-            },
-            // DIMENSI C: PENGEMBANGAN KEWIRAUSAHAAN
-            {
-                code: 'C311',
-                dimensi: 'C',
-                title: 'C.3.1.1 - Memahami dan menghayati arti perubahan (inovasi) madrasah.',
-                docs: [
-                    { id: 'doc-C311-1', title: '1. Program pengembangan kewirausahaan' },
-                    { id: 'doc-C311-2', title: '2. Profil madrasah beberapa tahun terakhir' }
-                ]
-            },
-            {
-                code: 'C312',
-                dimensi: 'C',
-                title: 'C.3.1.2 - Menggunakan metode, teknik dan proses perubahan.',
-                docs: [
-                    { id: 'doc-C312-1', title: '1. Observasi: pemanfaatan hasil inovasi dan kreatifitas' },
-                    { id: 'doc-C312-2', title: '2. Membudayakan hasil inovasi dan kreatifitas' },
-                    { id: 'doc-C312-3', title: '3. Pengembangan pembudayaan inovasi dan kreatifitas' }
-                ]
-            },
-            {
-                code: 'C313',
-                dimensi: 'C',
-                title: 'C.3.1.3 - Menumbuhkan iklim kebebasan berpikir untuk inovasi.',
-                docs: [
-                    { id: 'doc-C313-1', title: '1. Data jenis usaha produktif yang dimiliki' },
-                    { id: 'doc-C313-2', title: '2. Program pengelolaan dan pendayagunaan hasil usaha' }
-                ]
-            },
-            {
-                code: 'C314',
-                dimensi: 'C',
-                title: 'C.3.1.4 - Mendorong warga madrasah melakukan prakarsa.',
-                docs: [
-                    { id: 'doc-C314-1', title: '1. Data jenis usaha produktif yang dimiliki' },
-                    { id: 'doc-C314-2', title: '2. Program pengelolaan dan pendayagunaan hasil usaha' }
-                ]
-            },
-            {
-                code: 'C321',
-                dimensi: 'C',
-                title: 'C.3.2.1 - Mampu bertindak kreatif dan inovatif.',
-                docs: [
-                    { id: 'doc-C321-1', title: '1. RPP yang memuat rencana pembelajaran untuk menumbuhkan keterampilan berpikir kreatif, produktif, kritis, mandiri, kolaboratif, komunikatif' },
-                    { id: 'doc-C321-2', title: '2. Hasil kerja dan karya siswa' },
-                    { id: 'doc-C321-3', title: '3. Foto-foto aktifitas pembelajaran siswa' }
-                ]
-            },
-            {
-                code: 'C322',
-                dimensi: 'C',
-                title: 'C.3.2.2 - Mampu memberdayakan potensi madrasah secara optimal.',
-                docs: [
-                    { id: 'doc-C322-1', title: '1. Rencana Pengembangan Madrasah (RPM)' },
-                    { id: 'doc-C322-2', title: '2. Dokumen penanganan permasalahan/kasus' },
-                    { id: 'doc-C322-3', title: '3. Dokumen hasil kegiatan sekolah' },
-                    { id: 'doc-C322-4', title: '4. Dokumen hasil kegiatan pengembangan madrasah' }
-                ]
-            },
-            {
-                code: 'C323',
-                dimensi: 'C',
-                title: 'C.3.2.3 - Mampu menumbuhkan jiwa kewirausahaan.',
-                docs: [
-                    { id: 'doc-C323-1', title: '1. Rencana Pengembangan Madrasah (RPM)' },
-                    { id: 'doc-C323-2', title: '2. Dokumen penanganan permasalahan/kasus' },
-                    { id: 'doc-C323-3', title: '3. Dokumen hasil kegiatan sekolah' },
-                    { id: 'doc-C323-4', title: '4. Dokumen hasil kegiatan pengembangan madrasah' }
-                ]
-            },
-            {
-                code: 'C324',
-                dimensi: 'C',
-                title: 'C.3.2.4 - Mampu mencatat ide-ide baru.',
-                docs: [
-                    { id: 'doc-C324-1', title: '1. Rencana Pengembangan Madrasah (observasi, wawancara, studi dokumen)' }
-                ]
-            },
-            {
-                code: 'C331',
-                dimensi: 'C',
-                title: 'C.3.3.1 - Bersedia belajar dari orang lain.',
-                docs: [
-                    { id: 'doc-C331-1', title: '1. Forum komunikasi dengan lembaga pendidikan lain dan orang tua siswa' },
-                    { id: 'doc-C331-2', title: '2. Komunitas/forum kegiatan yang diikuti' }
-                ]
-            },
-            {
-                code: 'C332',
-                dimensi: 'C',
-                title: 'C.3.3.2 - Ingin selalu melakukan yang terbaik.',
-                docs: [
-                    { id: 'doc-C332-1', title: '1. Dokumen/foto pelaksanaan kegiatan' },
-                    { id: 'doc-C332-2', title: '2. Keikutsertaan dalam lomba-lomba pembelajaran/pendidikan/manajemen prestasi' }
-                ]
-            },
-            {
-                code: 'C333',
-                dimensi: 'C',
-                title: 'C.3.3.3 - Menciptakan perubahan yang kuat.',
-                docs: [
-                    { id: 'doc-C333-1', title: '1. Program inovasi madrasah atau RPM' },
-                    { id: 'doc-C333-2', title: '2. Laporan target yang sudah dicapai' }
-                ]
-            },
-            {
-                code: 'C341',
-                dimensi: 'C',
-                title: 'C.3.4.1 - Mampu melibatkan tokoh agama, masyarakat, pemerintah.',
-                docs: [
-                    { id: 'doc-C341-1', title: '1. MoU dengan pihak lain' },
-                    { id: 'doc-C341-2', title: '2. Sister school/kemitraan dengan sekolah lain' }
-                ]
-            },
-            {
-                code: 'C342',
-                dimensi: 'C',
-                title: 'C.3.4.2 - Mampu bersikap obyektif dalam mengatasi konflik.',
-                docs: [
-                    { id: 'doc-C342-1', title: '1. Observasi, wawancara, dan studi dokumen kegiatan/foto' }
-                ]
-            },
-            {
-                code: 'C343',
-                dimensi: 'C',
-                title: 'C.3.4.3 - Mampu bersikap simpatik/tenggang rasa.',
-                docs: [
-                    { id: 'doc-C343-1', title: '1. Observasi, wawancara, dan studi dokumen kegiatan dan foto' }
-                ]
-            },
-            {
-                code: 'C351',
-                dimensi: 'C',
-                title: 'C.3.5.1 - Mampu merencanakan kegiatan produksi/jasa.',
-                docs: [
-                    { id: 'doc-C351-1', title: '1. Dokumen laporan pelaksanaan dan hasil program pengembangan unit produksi kewirausahaan' }
-                ]
-            },
-            {
-                code: 'C352',
-                dimensi: 'C',
-                title: 'C.3.5.2 - Mampu membina kegiatan produksi/jasa.',
-                docs: [
-                    { id: 'doc-C352-1', title: '1. Dokumen laporan pelaksanaan dan hasil Program Pengembangan Unit Produksi Kewirausahaan' }
-                ]
-            },
-            {
-                code: 'C353',
-                dimensi: 'C',
-                title: 'C.3.5.3 - Mampu melaksanakan pengawasan kegiatan produksi/jasa.',
-                docs: [
-                    { id: 'doc-C353-1', title: '1. Laporan hasil Evaluasi Program Pengembangan Kewirausahaan' },
-                    { id: 'doc-C353-2', title: '2. Program Pengembangan Jiwa Kewirausahaan' },
-                    { id: 'doc-C353-3', title: '3. Program Pengembangan Unit Produksi Kewirausahaan' }
-                ]
-            },
-            {
-                code: 'C354',
-                dimensi: 'C',
-                title: 'C.3.5.4 - Mampu mengembangkan kegiatan produksi/jasa dan pemasarannya.',
-                docs: [
-                    { id: 'doc-C354-1', title: '1. Laporan hasil Evaluasi Program Pengembangan Kewirausahaan' },
-                    { id: 'doc-C354-2', title: '2. Program Pengembangan Jiwa Kewirausahaan' },
-                    { id: 'doc-C354-3', title: '3. Program Pengembangan Unit Produksi Kewirausahaan' }
-                ]
-            },
-            // DIMENSI D: SUPERVISI KEPADA GURU DAN TENAGA KEPENDIDIKAN
-            {
-                code: 'D411',
-                dimensi: 'D',
-                title: 'D.4.1.1 - Mengidentifikasi masalah guru dalam pembelajaran.',
-                docs: [
-                    { id: 'doc-D411-1', title: '1. Program pengawasan pembelajaran/supervisi pembelajaran' },
-                    { id: 'doc-D411-2', title: '2. Jadwal pelaksanaan supervisi' },
-                    { id: 'doc-D411-3', title: '3. SK tim supervisor' }
-                ]
-            },
-            {
-                code: 'D412',
-                dimensi: 'D',
-                title: 'D.4.1.2 - Mampu merumuskan tujuan supervisi.',
-                docs: [
-                    { id: 'doc-D412-1', title: '1. Program pengawasan pembelajaran/supervisi pembelajaran' },
-                    { id: 'doc-D412-2', title: '2. Jadwal pelaksanaan supervisi' },
-                    { id: 'doc-D412-3', title: '3. Laporan hasil supervisi' }
-                ]
-            },
-            {
-                code: 'D413',
-                dimensi: 'D',
-                title: 'D.4.1.3 - Mampu mengembangkan instrumen supervisi.',
-                docs: [
-                    { id: 'doc-D413-1', title: '1. Instrumen supervisi pembelajaran' }
-                ]
-            },
-            {
-                code: 'D421',
-                dimensi: 'D',
-                title: 'D.4.2.1 - Mengadakan pertemuan awal supervisi.',
-                docs: [
-                    { id: 'doc-D421-1', title: '1. Program pengawasan pembelajaran/supervisi pembelajaran' },
-                    { id: 'doc-D421-2', title: '2. Jadwal supervisi' },
-                    { id: 'doc-D421-3', title: '3. Daftar hadir, notulen, foto pertemuan awal supervisi' }
-                ]
-            },
-            {
-                code: 'D422',
-                dimensi: 'D',
-                title: 'D.4.2.2 - Melaksanakan pemantauan pembelajaran.',
-                docs: [
-                    { id: 'doc-D422-1', title: '1. Instrumen supervisi pembelajaran' },
-                    { id: 'doc-D422-2', title: '2. Laporan hasil supervisi pembelajaran' },
-                    { id: 'doc-D422-3', title: '3. Catatan rekomendasi hasil supervisi' },
-                    { id: 'doc-D422-4', title: '4. Rencana tindak lanjut hasil supervisi' }
-                ]
-            },
-            {
-                code: 'D423',
-                dimensi: 'D',
-                title: 'D.4.2.3 - Melakukan pertemuan refleksi.',
-                docs: [
-                    { id: 'doc-D423-1', title: '1. Analisis hasil supervisi pembelajaran' },
-                    { id: 'doc-D423-2', title: '2. Catatan rekomendasi hasil supervisi' },
-                    { id: 'doc-D423-3', title: '3. Daftar hadir, notulen, foto pertemuan refleksi hasil supervisi' }
-                ]
-            },
-            {
-                code: 'D424',
-                dimensi: 'D',
-                title: 'D.4.2.4 - Menyusun rekomendasi tindaklanjut perbaikan.',
-                docs: [
-                    { id: 'doc-D424-1', title: '1. Dokumen hasil analisis dan tindak lanjut supervisi penilaian' },
-                    { id: 'doc-D424-2', title: '2. Program kegiatan workshop/diklat penilaian untuk guru' },
-                    { id: 'doc-D424-3', title: '3. Hasil analisis butir soal' },
-                    { id: 'doc-D424-4', title: '4. Program remedial dan pengayaan' }
-                ]
-            },
-            {
-                code: 'D431',
-                dimensi: 'D',
-                title: 'D.4.3.1 - Memfasilitasi guru dalam merencanakan tindak lanjut perbaikan sistem penilaian hasil belajar.',
-                docs: [
-                    { id: 'doc-D431-1', title: '1. Dokumen hasil analisis dan tindak lanjut supervisi pembelajaran' },
-                    { id: 'doc-D431-2', title: '2. Hasil kegiatan workshop/diklat untuk guru' },
-                    { id: 'doc-D431-3', title: '3. Data dan piagam hasil pelatihan guru' }
-                ]
-            },
-            {
-                code: 'D432',
-                dimensi: 'D',
-                title: 'D.4.3.2 - Mengecek ulang keterlaksanaan rekomendasi oleh guru.',
-                docs: [
-                    { id: 'doc-D432-1', title: '1. Dokumen rekomendasi hasil perbaikan sistem penilaian hasil belajar' }
-                ]
-            },
-            {
-                code: 'D433',
-                dimensi: 'D',
-                title: 'D.4.3.3 - Melaksanakan pembinaan dan pengembangan guru sebagai tindak lanjut kegiatan supervisi.',
-                docs: [
-                    { id: 'doc-D433-1', title: '1. Laporan tindak lanjut supervisi' },
-                    { id: 'doc-D433-2', title: '2. Program PKB guru' },
-                    { id: 'doc-D433-3', title: '3. Laporan kegiatan pembinaan guru' },
-                    { id: 'doc-D433-4', title: '4. Daftar hadir, notulen, foto kegiatan PKB guru' }
-                ]
-            },
-            {
-                code: 'D434',
-                dimensi: 'D',
-                title: 'D.4.3.4 - Menggunakan data hasil supervisi untuk pemetaan ketercapaian program sebagai dasar perbaikan siklus berikutnya.',
-                docs: [
-                    { id: 'doc-D434-1', title: '1. Program PKB guru' },
-                    { id: 'doc-D434-2', title: '2. Laporan kegiatan pembinaan guru' },
-                    { id: 'doc-D434-3', title: '3. Daftar hadir, notulen, foto kegiatan PKB guru' }
-                ]
-            }
-        ];
-
-        // State Penugasan Berdasarkan Periode
-        const defaultPICList = ['Nur Asia S.Pd', 'Eka Sasmita S.Sos', 'Fahrir S.Pd', 'Haerunnisa S.Pd M.Pd', 'Khusnul Inayah S.Pd', 'Erwin S.Pd', 'Panji S.Pd', 'Nur Faida Ulfa S.Kom'];
-        const dimBPICList = ['Wahyuni S.Pd', 'Nur Syamsi S.Pd', 'Andi Irnawanti Nursak S.Pd', 'Nur Hikmah S.Pd', 'Halijah S.Pd', 'Marwati S.Pd M.Pd', 'Lukman SE'];
-        const dimCPICList = ['Kasmidar S.Pd', 'Lisa Aswirayanti SE', 'Nur Syamsi S.Hum', 'Fajrul Ikhsan Alimuddin S.Pd'];
-        const dimDPICList = ['Nur Syamsi S.Pd.I', 'St. Muawwafah S.Pd', 'St. Syamsiah S.Ag', 'Nurul Faiqah Jamal S.Pd'];
-
-        let allPeriodsAssignments = JSON.parse(localStorage.getItem('pkkm_all_assignments')) || {};
-        let assignments = allPeriodsAssignments[activePeriod] || {
-            'A111': ['Erwin S.Pd', 'Fahrir S.Pd', 'Haerunnisa S.Pd M.Pd', 'Halijah S.Pd'],
-            'A112': ['Erwin S.Pd', 'Fahrir S.Pd', 'Khusnul Inayah S.Pd', 'Nur Asia S.Pd'],
-            'B111': ['Erwin S.Pd', 'Halijah S.Pd']
-        };
-
-        // Ensure new Dimensi B indicator codes have default assignments
-        const dimBCodes = [
-            'B2101','B2102','B2103','B2104','B211','B212','B213','B214',
-            'B221','B222','B223','B224','B231','B232','B233','B234',
-            'B241','B242','B243','B244','B251','B252','B253','B254',
-            'B261','B262','B263','B264','B271','B272','B273','B274','B275',
-            'B281','B282','B283','B284','B291','B292','B293','B294'
-        ];
-
-        dimBCodes.forEach(code => {
-            if (!assignments[code]) {
-                assignments[code] = [...dimBPICList];
-            }
-        });
-
-        // Ensure Dimensi C indicator codes have default assignments
-        const dimCCodes = [
-            'C311','C312','C313','C314','C321','C322','C323','C324',
-            'C331','C332','C333','C341','C342','C343','C351','C352','C353','C354'
-        ];
-        dimCCodes.forEach(code => {
-            if (!assignments[code]) {
-                assignments[code] = [...dimCPICList];
-            }
-        });
-
-        // Ensure Dimensi D indicator codes have default assignments
-        const dimDCodes = [
-            'D411','D412','D413','D421','D422','D423','D424','D431','D432','D433','D434'
-        ];
-        dimDCodes.forEach(code => {
-            if (!assignments[code]) {
-                assignments[code] = [...dimDPICList];
-            }
-        });
-
-        // Sinkronkan penugasan awal periode aktif ke penyimpanan terpusat
-        allPeriodsAssignments[activePeriod] = assignments;
-        localStorage.setItem('pkkm_all_assignments', JSON.stringify(allPeriodsAssignments));
-
-        // DOM Loaded Handler
-        document.addEventListener('DOMContentLoaded', () => {
-            // Muat konfigurasi Google Drive & Google Sheets ke input Admin
-            if (document.getElementById('gasWebAppUrlInput')) {
-                document.getElementById('gasWebAppUrlInput').value = googleCloudConfig.gasUrl || '';
-                document.getElementById('googleDriveFolderIdInput').value = googleCloudConfig.driveFolderId || '';
-                document.getElementById('googleSheetIdInput').value = googleCloudConfig.sheetId || '';
-            }
-            updateCloudStatusUI();
-
-            // Set initial active period dropdown (Admin) & viewed period dropdown (Dashboard)
-            const periodSelect = document.getElementById('adminPeriodSelect');
-            if (periodSelect) {
-                periodSelect.value = activePeriod;
-            }
-            const dashPeriodSelect = document.getElementById('dashboardPeriodSelect');
-            if (dashPeriodSelect) {
-                dashPeriodSelect.value = viewedPeriod;
-            }
-            document.getElementById('activePeriodBadge').innerText = activePeriod;
-            updateDashboardPeriodOptionsLabel();
-            // Render Header Custom Logo, Banner & Auth State
-            renderHeaderLogo();
-            renderHeaderBanner();
-            
-            // Restore Active User Session if exists
-            const savedSession = JSON.parse(localStorage.getItem('pkkm_active_user_session'));
-            if (savedSession) {
-                const foundUser = usersList.find(u => u.email.toLowerCase() === savedSession.email.toLowerCase() && u.pass === savedSession.pass);
-                if (foundUser) {
-                    currentUser = foundUser;
-                    isLoggedIn = true;
-                    if (currentUser.role === 'ADMIN') {
-                        document.getElementById('tabAdmin')?.classList.remove('hidden');
-                    }
-                }
-            }
-
-            // Initial UI Render
-            renderAuthHeader();
-            renderDashboardIndicators();
-            renderAdminAssignments();
-            renderUserTable();
-
-            // Jika sudah terkoneksi ke Google Apps Script, tarik data terbaru secara otomatis saat halaman dibuka
-            if (googleCloudConfig.gasUrl) {
-                pullDataFromGoogleSheet(false);
-            }
-        });
-
-        // ==================== INTEGRASI GOOGLE DRIVE & GOOGLE SHEET (CODE.GS) ====================
-        function updateCloudStatusUI(isConnected = null) {
+        function updateCloudStatusUI(isConnected = Boolean(googleCloudConfig.gasUrl)) {
             const badge = document.getElementById('cloudSyncStatusBadge');
             const adminTag = document.getElementById('adminCloudConnectionTag');
-            const configured = Boolean(googleCloudConfig.gasUrl);
-
-            if (configured) {
+            if (isConnected) {
                 if (badge) {
                     badge.className = 'flex items-center space-x-1.5 bg-emerald-50 border border-emerald-300 px-3 py-1.5 rounded-lg text-xs font-bold text-emerald-800 shadow-2xs';
-                    badge.innerHTML = `<i class="fa-brands fa-google-drive text-brandGreen"></i><span>Google Drive & Sheet Aktif</span>`;
+                    badge.innerHTML = '<i class="fa-brands fa-google-drive text-brandGreen"></i><span>Google Drive & Sheet Aktif</span>';
                 }
                 if (adminTag) {
                     adminTag.className = 'text-[11px] font-extrabold bg-emerald-600 text-white px-3 py-1 rounded-full self-start sm:self-auto';
-                    adminTag.innerText = isConnected === false ? 'Gagal Terhubung (Cek URL/ID)' : 'Terhubung ke Google Sheets & Drive';
+                    adminTag.innerText = 'Terhubung ke Google Sheets & Drive';
                 }
             } else {
                 if (badge) {
                     badge.className = 'flex items-center space-x-1.5 bg-slate-100 border border-slate-300 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 shadow-2xs';
-                    badge.innerHTML = `<i class="fa-solid fa-database text-slate-500"></i><span>Mode Penyimpanan Lokal</span>`;
+                    badge.innerHTML = '<i class="fa-solid fa-database text-slate-500"></i><span>Mode Penyimpanan Lokal</span>';
                 }
                 if (adminTag) {
                     adminTag.className = 'text-[11px] font-extrabold bg-slate-200 text-slate-700 px-3 py-1 rounded-full self-start sm:self-auto';
@@ -1846,12 +726,16 @@
         }
 
         async function saveAndConnectGoogleDatabase() {
-            const gasUrl = document.getElementById('gasWebAppUrlInput').value.trim();
-            const driveFolderId = document.getElementById('googleDriveFolderIdInput').value.trim();
-            const sheetId = document.getElementById('googleSheetIdInput').value.trim();
+            const gasUrlInput = document.getElementById('gasWebAppUrlInput');
+            const driveFolderInput = document.getElementById('googleDriveFolderIdInput');
+            const sheetIdInput = document.getElementById('googleSheetIdInput');
+
+            const gasUrl = (gasUrlInput ? gasUrlInput.value.trim() : '') || googleCloudConfig.gasUrl;
+            const driveFolderId = (driveFolderInput ? driveFolderInput.value.trim() : '') || googleCloudConfig.driveFolderId;
+            const sheetId = (sheetIdInput ? sheetIdInput.value.trim() : '') || googleCloudConfig.sheetId;
 
             if (!gasUrl) {
-                showSystemNotice('Silakan masukkan URL Web App Google Apps Script terlebih dahulu!');
+                showSystemNotice('Silakan isi URL Web App Google Apps Script terlebih dahulu.');
                 return;
             }
 
@@ -1866,7 +750,6 @@
 
                 if (result.status === 'success') {
                     updateCloudStatusUI(true);
-                    // Jika sheet baru saja dibuat dan masih kosong, otomatis kirim data awal Users & Penugasan
                     if (result.data && (!result.data.users || result.data.users.length === 0)) {
                         await pushAllLocalDataToGoogleSheet(false);
                     } else {
@@ -1890,7 +773,6 @@
             }
 
             try {
-                // 1. Kirim Tab Users
                 await fetch(googleCloudConfig.gasUrl, {
                     method: 'POST',
                     body: JSON.stringify({
@@ -1900,7 +782,6 @@
                     })
                 });
 
-                // 2. Kirim Tab Penugasan
                 await fetch(googleCloudConfig.gasUrl, {
                     method: 'POST',
                     body: JSON.stringify({
@@ -1910,7 +791,6 @@
                     })
                 });
 
-                // 3. Simpan Periode Aktif ke Tab Pengaturan_Tampilan
                 await fetch(googleCloudConfig.gasUrl, {
                     method: 'POST',
                     body: JSON.stringify({
@@ -1999,7 +879,6 @@
             }
         }
 
-        // FUNGSI OLAH LOGO MADRASAH CUSTOM (DENGAN AUTO-KOMPRESI LOKAL)
         function handleCustomLogoUpload(event) {
             const file = event.target.files[0];
             if (file) {
@@ -2057,7 +936,7 @@
                                     customLogoData = res.url;
                                     localStorage.setItem('pkkm_custom_logo_data', customLogoData);
                                     renderHeaderLogo();
-                                    showSystemNotice('Logo berhasil diunggah ke folder Google Drive "Data PKKM" & disimpan ke Google Sheet!');
+                                    showSystemNotice('Logo berhasil diunggah ke folder Google Drive "DATA PKKM" & disimpan ke Google Sheet!');
                                 }
                             })
                             .catch(() => showSystemNotice('Logo tersimpan lokal, namun gagal sinkron ke Google Drive.'));
@@ -2105,7 +984,6 @@
             }
         }
 
-        // FUNGSI UPLOAD & TAMPILKAN BANNER HEADER FULL-WIDTH
         function handleCustomBannerUpload(event) {
             const file = event.target.files[0];
             if (!file) return;
@@ -2114,7 +992,6 @@
             reader.onload = function(e) {
                 const img = new Image();
                 img.onload = function() {
-                    // Kompresi otomatis lebar maksimal 1600px agar tajam namun ringan di localStorage
                     const canvas = document.createElement('canvas');
                     const ctx = canvas.getContext('2d');
                     const maxWidth = 1600;
@@ -2139,7 +1016,7 @@
                     }
 
                     if (googleCloudConfig.gasUrl) {
-                        showSystemNotice('Sedang mengunggah Banner ke folder Google Drive "Data PKKM"... Mohon tunggu sebentar.');
+                        showSystemNotice('Sedang mengunggah Banner ke folder Google Drive "DATA PKKM"... Mohon tunggu sebentar.');
                         const base64Only = customBannerData.split(',')[1] || '';
                         fetch(googleCloudConfig.gasUrl, {
                             method: 'POST',
@@ -2159,7 +1036,7 @@
                                 customBannerData = res.url;
                                 localStorage.setItem('pkkm_custom_banner_data', customBannerData);
                                 renderHeaderBanner();
-                                showSystemNotice('Banner Header berhasil masuk ke folder Google Drive "Data PKKM" & tercatat di Google Sheet!');
+                                showSystemNotice('Banner Header berhasil masuk ke folder Google Drive "DATA PKKM" & tercatat di Google Sheet!');
                             } else {
                                 showSystemNotice('Banner tampil di lokal, namun gagal masuk ke Drive: ' + (res.message || 'Cek izin Apps Script.'));
                             }
@@ -2218,7 +1095,6 @@
             }
         }
 
-        // Ganti Periode Aktif oleh ADMIN (Menetapkan tahun mana yang dibuka untuk upload/edit)
         function changeActivePeriod(newPeriod) {
             const previousPeriod = activePeriod;
             activePeriod = newPeriod;
@@ -2232,14 +1108,12 @@
             }
             updateDashboardPeriodOptionsLabel();
             
-            // 1. Isolasi & muat data link dokumen khusus untuk periode yang dipilih
             if (!allPeriodsDocLinks[activePeriod]) {
                 allPeriodsDocLinks[activePeriod] = {};
             }
             uploadedDocLinks = allPeriodsDocLinks[activePeriod];
             localStorage.setItem('pkkm_all_doc_links', JSON.stringify(allPeriodsDocLinks));
 
-            // 2. Jika periode baru belum memiliki pengaturan penugasan, salin otomatis (deep copy) dari periode sebelumnya agar tidak perlu input ulang
             const existingTargetAssignments = allPeriodsAssignments[activePeriod];
             const isTargetEmpty = !existingTargetAssignments || Object.keys(existingTargetAssignments).length === 0;
 
@@ -2251,7 +1125,6 @@
 
             assignments = allPeriodsAssignments[activePeriod];
             
-            // Sinkronkan perubahan periode aktif ke Google Sheet jika terhubung
             if (googleCloudConfig.gasUrl) {
                 pushAllLocalDataToGoogleSheet(false);
             }
@@ -2260,7 +1133,6 @@
             renderAdminAssignments();
         }
 
-        // Ganti Tahun Tampilan di Dashboard (Bisa melihat Tahun Aktif maupun Tahun Arsip)
         function changeViewedPeriod(selectedPeriod) {
             viewedPeriod = selectedPeriod;
             if (!allPeriodsDocLinks[viewedPeriod]) {
@@ -2270,7 +1142,6 @@
             renderDashboardIndicators();
         }
 
-        // Tandai opsi dropdown mana yang merupakan Tahun Aktif vs Arsip
         function updateDashboardPeriodOptionsLabel() {
             const dashPeriodSelect = document.getElementById('dashboardPeriodSelect');
             if (!dashPeriodSelect) return;
@@ -2283,19 +1154,14 @@
             });
         }
 
-        // HELPER FUNGSI BUKA & TUTUP MODAL
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.classList.remove('hidden');
-            }
+            if (modal) modal.classList.remove('hidden');
         }
 
         function closeModal(modalId) {
             const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.classList.add('hidden');
-            }
+            if (modal) modal.classList.add('hidden');
         }
 
         function openLoginModal() {
@@ -2306,14 +1172,11 @@
             openModal('loginModal');
         }
 
-        // Handle Filter Pengetikan Real-time Sugesti Akun
         function handleLoginInputSearch(query) {
             const listEl = document.getElementById('rememberedAccountsDropdownList');
             if (!listEl) return;
 
             const trimmedQuery = query.trim().toLowerCase();
-
-            // Kumpulan sumber akun yang dicari: gabungan dari akun yang pernah login + daftar user terdaftar
             let searchPool = savedLoginAccounts.length > 0 ? savedLoginAccounts : usersList;
 
             if (trimmedQuery.length === 0) {
@@ -2321,7 +1184,6 @@
                 return;
             }
 
-            // Filter akun berdasarkan awalan/kandungan nama atau email
             const matchedAccounts = searchPool.filter(acc => 
                 acc.name.toLowerCase().includes(trimmedQuery) || 
                 acc.email.toLowerCase().includes(trimmedQuery)
@@ -2333,12 +1195,10 @@
                     const itemBtn = document.createElement('button');
                     itemBtn.type = 'button';
                     itemBtn.className = 'w-full text-left bg-white/5 hover:bg-purple-600/40 text-purple-100 p-2 rounded-xl flex items-center justify-between transition-all border border-transparent hover:border-purple-400/40 group';
-                    itemBtn.onclick = () => {
-                        selectSavedAccount(acc.email, acc.pass);
-                    };
+                    itemBtn.onclick = () => selectSavedAccount(acc.email, acc.pass);
                     itemBtn.innerHTML = `
                         <div class="flex items-center space-x-2 overflow-hidden">
-                            <div class="w-6 h-6 rounded-lg bg-purple-500/30 text-amber-300 flex items-center justify-center text-[10px] flex-shrink-0 group-hover:scale-110 transition-transform">
+                            <div class="w-6 h-6 rounded-lg bg-purple-500/30 text-amber-300 flex items-center justify-center text-[10px] flex-shrink-0">
                                 <i class="fa-solid fa-user-check"></i>
                             </div>
                             <div class="truncate">
@@ -2366,7 +1226,6 @@
             hideLoginDropdown();
         }
 
-        // Submit Login Handler
         function handleLoginSubmit(e) {
             e.preventDefault();
             const email = document.getElementById('loginEmail').value.trim();
@@ -2382,15 +1241,11 @@
                 currentUser = foundUser;
                 isLoggedIn = true;
 
-                // SIMPAN KE SESSION SEMENTARA
                 localStorage.setItem('pkkm_active_user_session', JSON.stringify({ email: foundUser.email, pass: foundUser.pass }));
 
-                // SIMPAN KE DAFTAR PERNAH LOGIN (REMEMBER ME) DI LAPTOP / HP INI
                 if (isRemember) {
                     const existingIndex = savedLoginAccounts.findIndex(acc => acc.email.toLowerCase() === foundUser.email.toLowerCase());
-                    if (existingIndex !== -1) {
-                        savedLoginAccounts.splice(existingIndex, 1);
-                    }
+                    if (existingIndex !== -1) savedLoginAccounts.splice(existingIndex, 1);
                     savedLoginAccounts.unshift({ name: foundUser.name, email: foundUser.email, pass: foundUser.pass, role: foundUser.role });
                     localStorage.setItem('pkkm_saved_login_accounts', JSON.stringify(savedLoginAccounts));
                 }
@@ -2408,10 +1263,7 @@
 
                 renderAuthHeader();
                 renderDashboardIndicators();
-
-                // TAMPILKAN POP-UP DOA SETELAH LOGIN SUKSES
                 showWelcomeGreetingPopup(foundUser.name);
-
             } else {
                 alertBox.classList.remove('hidden');
                 document.getElementById('loginAlertText').innerText = 'Email atau password tidak ditemukan!';
@@ -2423,7 +1275,6 @@
             openModal('welcomeGreetingModal');
 
             if (autoCloseGreetingTimer) clearTimeout(autoCloseGreetingTimer);
-            // Hilang otomatis setelah 4 detik
             autoCloseGreetingTimer = setTimeout(() => {
                 closeModal('welcomeGreetingModal');
             }, 4000);
@@ -2474,13 +1325,11 @@
             }
         }
 
-        // Render Dashboard Indicators & Upload Button (Sesuai Status Login & Tahun Aktif vs Arsip)
         function renderDashboardIndicators() {
             const container = document.getElementById('dashboardIndicatorsContainer');
             const selectedDimensi = document.getElementById('dashboardDimensiFilter').value;
             const isArchiveMode = (viewedPeriod !== activePeriod);
 
-            // Render Banner Status Mode di sebelah filter
             const modeBanner = document.getElementById('periodModeBanner');
             if (modeBanner) {
                 if (isArchiveMode) {
@@ -2500,26 +1349,21 @@
                 }
             }
             
-            // Pastikan selalu membaca data penugasan & dokumen sesuai tahun yang sedang dilihat (viewedPeriod)
             const currentPeriodDocLinks = allPeriodsDocLinks[viewedPeriod] || {};
             uploadedDocLinks = currentPeriodDocLinks;
             const currentPeriodAssignments = allPeriodsAssignments[viewedPeriod] || allPeriodsAssignments[activePeriod] || assignments || {};
             const filteredIndicators = MASTER_INDICATORS.filter(ind => selectedDimensi === 'ALL' || ind.dimensi === selectedDimensi);
 
-            // HITUNG REAL-TIME STATISTIK BUKTI DOKUMEN UNTUK TAHUN YANG SEDANG DILIHAT
             let grandTotalDocs = 0;
             let uploadedCount = 0;
 
             MASTER_INDICATORS.forEach(ind => {
                 ind.docs.forEach(doc => {
                     grandTotalDocs++;
-                    if (currentPeriodDocLinks[doc.id]) {
-                        uploadedCount++;
-                    }
+                    if (currentPeriodDocLinks[doc.id]) uploadedCount++;
                 });
             });
 
-            // PERBAIKAN: Gunakan ID elemen statistik yang benar dengan guard clause
             const elTotal = document.getElementById('statTotalDocs');
             const elUploaded = document.getElementById('statUploadedDocs');
             const elPending = document.getElementById('statPendingDocs');
@@ -2540,7 +1384,6 @@
                     ? assignedNames.join(', ') 
                     : '<span class="text-rose-500 font-bold italic">Belum ada penanggung jawab</span>';
 
-                // Hak unggah HANYA aktif jika BUKAN Mode Arsip (!isArchiveMode) DAN user login adalah Admin / Guru tertugas
                 const canUploadInThisPeriod = !isArchiveMode && isLoggedIn && currentUser && (
                     currentUser.role === 'ADMIN' || 
                     assignedNames.some(name => normalizeName(name) === normalizeName(currentUser.name))
@@ -2552,13 +1395,13 @@
 
                     if (docUrl) {
                         docsHTML += `
-                            <div class="flex items-center justify-between p-3 rounded-xl bg-emerald-50/70 hover:bg-emerald-100/80 border border-emerald-200 transition-all shadow-2xs hover:shadow-xs group">
+                            <div class="flex items-center justify-between p-3 rounded-xl bg-emerald-50/70 hover:bg-emerald-100/80 border border-emerald-200 transition-all shadow-2xs group">
                                 <div class="flex items-start space-x-3 pr-2">
-                                    <div class="w-3.5 h-3.5 rounded-full bg-emerald-500 mt-0.5 flex-shrink-0 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <div class="w-3.5 h-3.5 rounded-full bg-emerald-500 mt-0.5 flex-shrink-0 flex items-center justify-center">
                                         <i class="fa-solid fa-check text-[8px] text-white"></i>
                                     </div>
                                     <div>
-                                        <p class="text-xs sm:text-sm font-bold text-emerald-950 group-hover:text-emerald-700 transition-colors">${doc.title}</p>
+                                        <p class="text-xs sm:text-sm font-bold text-emerald-950">${doc.title}</p>
                                         <p class="text-[11px] text-emerald-700 font-semibold flex items-center space-x-1 mt-0.5">
                                             <i class="fa-solid fa-circle-check text-emerald-600"></i>
                                             <span>Dokumen Tersedia</span>
@@ -2566,12 +1409,12 @@
                                     </div>
                                 </div>
                                 <div class="flex items-center space-x-2 shrink-0">
-                                    <button onclick="openDocument('${docUrl}')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-1.5 px-3 rounded-lg shadow-xs flex items-center space-x-1 transition-all hover:scale-105 active:scale-95">
+                                    <button onclick="openDocument('${docUrl}')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-1.5 px-3 rounded-lg shadow-xs flex items-center space-x-1 transition-all">
                                         <span>Buka</span>
                                         <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
                                     </button>
                                     ${canUploadInThisPeriod ? `
-                                        <button onclick="openUploadModal('${doc.id}', '${doc.title.replace(/'/g, "\\'")}', '${ind.title.replace(/'/g, "\\'")}')" class="bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold py-1.5 px-2.5 rounded-lg flex items-center space-x-1 shadow-xs transition-all border border-amber-400 hover:scale-105 active:scale-95" title="Ganti Dokumen">
+                                        <button onclick="openUploadModal('${doc.id}', '${doc.title.replace(/'/g, "\\'")}', '${ind.title.replace(/'/g, "\\'")}')" class="bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold py-1.5 px-2.5 rounded-lg flex items-center space-x-1 shadow-xs transition-all border border-amber-400" title="Ganti Dokumen">
                                             <i class="fa-solid fa-rotate text-xs"></i>
                                         </button>
                                     ` : ''}
@@ -2582,7 +1425,7 @@
                         let actionButton = '';
                         if (canUploadInThisPeriod) {
                             actionButton = `
-                                <button onclick="openUploadModal('${doc.id}', '${doc.title.replace(/'/g, "\\'")}', '${ind.title.replace(/'/g, "\\'")}')" class="bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold py-1.5 px-3.5 rounded-lg flex items-center space-x-1.5 shadow-xs transition-all border border-amber-400 hover:scale-105 active:scale-95 shrink-0">
+                                <button onclick="openUploadModal('${doc.id}', '${doc.title.replace(/'/g, "\\'")}', '${ind.title.replace(/'/g, "\\'")}')" class="bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold py-1.5 px-3.5 rounded-lg flex items-center space-x-1.5 shadow-xs transition-all border border-amber-400 shrink-0">
                                     <i class="fa-solid fa-cloud-arrow-up text-xs"></i>
                                     <span>Upload</span>
                                 </button>
@@ -2590,12 +1433,12 @@
                         }
 
                         docsHTML += `
-                            <div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-amber-50/70 border border-slate-200 hover:border-amber-300 transition-all shadow-2xs hover:shadow-xs group">
+                            <div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-amber-50/70 border border-slate-200 hover:border-amber-300 transition-all shadow-2xs group">
                                 <div class="flex items-start space-x-3 pr-2 cursor-pointer w-full" onclick="showMissingDocAlert('${doc.title.replace(/'/g, "\\'")}')">
                                     <div class="w-2.5 h-2.5 rounded-full bg-slate-300 group-hover:bg-amber-500 mt-1.5 flex-shrink-0 transition-colors"></div>
                                     <div>
-                                        <p class="text-xs sm:text-sm font-semibold text-slate-700 group-hover:text-amber-950 transition-colors">${doc.title}</p>
-                                        <p class="text-[11px] text-slate-400 group-hover:text-amber-700 flex items-center space-x-1 mt-0.5 transition-colors">
+                                        <p class="text-xs sm:text-sm font-semibold text-slate-700">${doc.title}</p>
+                                        <p class="text-[11px] text-slate-400 flex items-center space-x-1 mt-0.5">
                                             <i class="fa-regular fa-clock"></i>
                                             <span>Belum ada dokumen</span>
                                         </p>
@@ -2608,12 +1451,12 @@
                 });
 
                 html += `
-                    <div class="border border-slate-200/90 hover:border-brandGreen/60 rounded-2xl p-4 sm:p-5 bg-white shadow-xs hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group border-l-4 border-l-transparent hover:border-l-brandGreen">
+                    <div class="border border-slate-200/90 hover:border-brandGreen/60 rounded-2xl p-4 sm:p-5 bg-white shadow-xs transition-all">
                         <div class="flex items-start space-x-2.5">
-                            <i class="fa-solid fa-circle-dot text-amber-500 group-hover:text-brandGreen mt-1 text-sm flex-shrink-0 transition-colors"></i>
+                            <i class="fa-solid fa-circle-dot text-amber-500 mt-1 text-sm flex-shrink-0"></i>
                             <div class="w-full">
-                                <h4 class="font-bold text-slate-800 group-hover:text-emerald-950 text-sm sm:text-base leading-snug transition-colors">${ind.title}</h4>
-                                <div class="flex items-start space-x-2 mt-2 text-xs text-slate-600 bg-slate-50 group-hover:bg-emerald-50/50 p-2.5 rounded-xl border border-slate-100 group-hover:border-emerald-200/60 transition-colors">
+                                <h4 class="font-bold text-slate-800 text-sm sm:text-base leading-snug">${ind.title}</h4>
+                                <div class="flex items-start space-x-2 mt-2 text-xs text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
                                     <i class="fa-solid fa-users text-brandGreen mt-0.5"></i>
                                     <p class="leading-relaxed">
                                         <strong class="font-semibold text-slate-700">Penanggung Jawab:</strong> ${pjText}
@@ -2636,7 +1479,6 @@
             container.innerHTML = html;
         }
 
-        // BUKA MODAL POPUP UPLOAD BUKTI KINERJA
         function openUploadModal(docId, docTitle, indicatorTitle) {
             if (viewedPeriod !== activePeriod) {
                 showSystemNotice('Mode Arsip aktif: Unggah atau ubah dokumen hanya diperbolehkan pada Tahun Penilaian Aktif.');
@@ -2680,7 +1522,6 @@
         function handleFileSelected(event) {
             const file = event.target.files[0];
             if (file) {
-                // Jika terkoneksi ke Google Drive, izinkan hingga 10 MB; jika lokal, batasi 700 KB
                 const maxAllowedBytes = googleCloudConfig.gasUrl ? (10 * 1024 * 1024) : (750 * 1024);
                 if (file.size > maxAllowedBytes) {
                     const limitLabel = googleCloudConfig.gasUrl ? '10 MB' : '700 KB (Mode Lokal)';
@@ -2713,7 +1554,6 @@
             const loadingBox = document.getElementById('uploadDriveLoading');
             const saveBtn = document.getElementById('btnSaveUploadedDoc');
 
-            // JIKA TERKONEKSI KE GOOGLE APPS SCRIPT (GOOGLE DRIVE & GOOGLE SHEET)
             if (googleCloudConfig.gasUrl) {
                 let payload = {
                     action: 'uploadDocument',
@@ -2762,7 +1602,7 @@
 
                         closeModal('uploadDocModal');
                         renderDashboardIndicators();
-                        showSystemNotice('Sukses! File/Dokumen tersimpan di Google Drive dan link otomatis masuk ke Google Sheet.');
+                        showSystemNotice('Sukses! File/Dokumen tersimpan di Google Drive "DATA PKKM" dan link otomatis masuk ke Google Sheet.');
                         return;
                     } else {
                         showSystemNotice('Gagal mengunggah ke Google Drive: ' + (result.message || 'Kesalahan server Apps Script.'));
@@ -2776,7 +1616,6 @@
                 }
             }
 
-            // FALLBACK JIKA MASIH MODE LOKAL (BELUM MENGISI URL CODE.GS)
             let finalUrl = '';
             if (currentUploadTab === 'file') {
                 if (!selectedFileMockUrl) {
@@ -2799,7 +1638,7 @@
                 try {
                     localStorage.setItem('pkkm_all_doc_links', JSON.stringify(allPeriodsDocLinks));
                 } catch (err) {
-                    showSystemNotice('Penyimpanan browser penuh. Hubungkan Google Drive & Sheet di Panel Admin atau gunakan Link Google Drive.');
+                    showSystemNotice('Penyimpanan browser penuh. Hubungkan Google Drive & Sheet di Panel Admin.');
                 }
                 
                 closeModal('uploadDocModal');
@@ -2823,7 +1662,6 @@
             }
         }
 
-        // Render Admin Assignments
         function renderAdminAssignments() {
             const container = document.getElementById('adminAssignmentsContainer');
             if (!container) return;
@@ -2854,7 +1692,6 @@
                             <i class="fa-solid fa-list-check text-amber-500"></i>
                             <span>${ind.title}</span>
                         </h4>
-
                         <div>
                             <p class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2">Pilih Penanggung Jawab (Auto Sync):</p>
                             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 text-xs">
@@ -2869,20 +1706,14 @@
         }
 
         function toggleAssignmentRealtime(code, userName, isChecked) {
-            if (!allPeriodsAssignments[activePeriod]) {
-                allPeriodsAssignments[activePeriod] = {};
-            }
-            if (!allPeriodsAssignments[activePeriod][code]) {
-                allPeriodsAssignments[activePeriod][code] = [];
-            }
+            if (!allPeriodsAssignments[activePeriod]) allPeriodsAssignments[activePeriod] = {};
+            if (!allPeriodsAssignments[activePeriod][code]) allPeriodsAssignments[activePeriod][code] = [];
 
             let list = allPeriodsAssignments[activePeriod][code];
             const targetNorm = normalizeName(userName);
 
             if (isChecked) {
-                if (!list.some(n => normalizeName(n) === targetNorm)) {
-                    list.push(userName);
-                }
+                if (!list.some(n => normalizeName(n) === targetNorm)) list.push(userName);
             } else {
                 allPeriodsAssignments[activePeriod][code] = list.filter(n => normalizeName(n) !== targetNorm);
             }
@@ -2890,7 +1721,6 @@
             assignments = allPeriodsAssignments[activePeriod];
             localStorage.setItem('pkkm_all_assignments', JSON.stringify(allPeriodsAssignments));
             
-            // Otomatis kirim perubahan penugasan ke tab 'Penugasan' di Google Sheet
             if (googleCloudConfig.gasUrl) {
                 fetch(googleCloudConfig.gasUrl, {
                     method: 'POST',
@@ -2903,17 +1733,6 @@
             }
 
             renderAdminAssignments();
-            renderDashboardIndicators();
-        }
-
-        function updateDocLink(docId, url) {
-            if (url.trim()) {
-                uploadedDocLinks[docId] = url.trim();
-            } else {
-                delete uploadedDocLinks[docId];
-            }
-            allPeriodsDocLinks[activePeriod] = uploadedDocLinks;
-            localStorage.setItem('pkkm_all_doc_links', JSON.stringify(allPeriodsDocLinks));
             renderDashboardIndicators();
         }
 
@@ -2955,9 +1774,7 @@
             if (name && email && pass) {
                 usersList.unshift({ id: Date.now(), name, email, pass, role });
                 localStorage.setItem('pkkm_users_list', JSON.stringify(usersList));
-                if (googleCloudConfig.gasUrl) {
-                    pushAllLocalDataToGoogleSheet(false);
-                }
+                if (googleCloudConfig.gasUrl) pushAllLocalDataToGoogleSheet(false);
                 document.getElementById('newUserName').value = '';
                 document.getElementById('newUserEmail').value = '';
                 document.getElementById('newUserPass').value = '';
@@ -2969,9 +1786,7 @@
         function deleteUser(userId) {
             usersList = usersList.filter(u => u.id !== userId);
             localStorage.setItem('pkkm_users_list', JSON.stringify(usersList));
-            if (googleCloudConfig.gasUrl) {
-                pushAllLocalDataToGoogleSheet(false);
-            }
+            if (googleCloudConfig.gasUrl) pushAllLocalDataToGoogleSheet(false);
             renderUserTable();
             renderAdminAssignments();
         }
@@ -2986,14 +1801,7 @@
             }));
 
             const worksheet = XLSX.utils.json_to_sheet(excelData);
-            worksheet['!cols'] = [
-                { wch: 6 },
-                { wch: 32 },
-                { wch: 28 },
-                { wch: 18 },
-                { wch: 12 }
-            ];
-
+            worksheet['!cols'] = [{ wch: 6 }, { wch: 32 }, { wch: 28 }, { wch: 18 }, { wch: 12 }];
             const workbook = XLSX.utils.book_new();
             XLSX.utils.book_append_sheet(workbook, worksheet, "Pengguna PKKM");
             XLSX.writeFile(workbook, `Pengguna_PKKM_DIGITAL_ASPAT.xlsx`);
@@ -3024,6 +1832,46 @@
                 renderAdminAssignments();
             }
         }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const gasInput = document.getElementById('gasWebAppUrlInput');
+            const driveInput = document.getElementById('googleDriveFolderIdInput');
+            const sheetInput = document.getElementById('googleSheetIdInput');
+            if (gasInput) gasInput.value = googleCloudConfig.gasUrl;
+            if (driveInput) driveInput.value = googleCloudConfig.driveFolderId;
+            if (sheetInput) sheetInput.value = googleCloudConfig.sheetId;
+
+            const savedSession = JSON.parse(localStorage.getItem('pkkm_active_user_session'));
+            if (savedSession) {
+                const matched = usersList.find(u => u.email.toLowerCase() === savedSession.email.toLowerCase() && u.pass === savedSession.pass);
+                if (matched) {
+                    currentUser = matched;
+                    isLoggedIn = true;
+                    if (matched.role === 'ADMIN') {
+                        document.getElementById('tabAdmin')?.classList.remove('hidden');
+                    }
+                }
+            }
+
+            const badgeEl = document.getElementById('activePeriodBadge');
+            if (badgeEl) badgeEl.innerText = activePeriod;
+            const dashPeriodSelect = document.getElementById('dashboardPeriodSelect');
+            if (dashPeriodSelect) dashPeriodSelect.value = viewedPeriod;
+            const adminPeriodSelect = document.getElementById('adminPeriodSelect');
+            if (adminPeriodSelect) adminPeriodSelect.value = activePeriod;
+
+            updateDashboardPeriodOptionsLabel();
+            updateCloudStatusUI();
+            renderHeaderLogo();
+            renderHeaderBanner();
+            renderAuthHeader();
+            renderDashboardIndicators();
+            renderUserTable();
+
+            if (googleCloudConfig.gasUrl) {
+                pullDataFromGoogleSheet(false);
+            }
+        });
     </script>
 </body>
 </html>
