@@ -334,9 +334,9 @@
             </div>
         </div>
 
-        <!-- NAVIGATION TABS BAR -->
-        <div id="navigationTabs" class="bg-white rounded-xl px-4 py-3 shadow-xs border border-slate-200/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-sm font-medium mb-6">
-            <div class="flex items-center space-x-6 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0">
+        <!-- NAVIGATION TABS BAR (Hanya tampil saat Admin login untuk berpindah antara Dashboard & Admin Panel) -->
+        <div id="navigationTabs" class="hidden bg-white rounded-xl px-4 py-2.5 shadow-xs border border-slate-200/80 flex items-center justify-between gap-3 text-sm font-medium mb-5">
+            <div class="flex items-center space-x-6 overflow-x-auto">
                 <button onclick="switchTab('dashboard')" id="tabDashboard" class="flex items-center space-x-2 text-brandGreen border-b-2 border-brandGreen pb-1 pt-1 font-bold transition-all whitespace-nowrap shrink-0">
                     <i class="fa-solid fa-chart-line text-xs text-amber-500"></i>
                     <span>Dashboard Penilaian</span>
@@ -345,17 +345,6 @@
                     <i class="fa-solid fa-gear text-xs"></i>
                     <span>Admin Panel</span>
                 </button>
-            </div>
-            
-            <div class="flex flex-wrap items-center gap-2 w-full sm:w-auto justify-center sm:justify-end shrink-0">
-                <div id="cloudSyncStatusBadge" class="flex items-center space-x-1.5 bg-slate-100 border border-slate-300 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 shadow-2xs">
-                    <i class="fa-solid fa-database text-slate-500"></i>
-                    <span>Mode Penyimpanan Lokal</span>
-                </div>
-                <div class="flex items-center space-x-2 bg-amber-50 border border-amber-300/80 px-3 py-1.5 rounded-lg text-xs font-bold text-amber-900 shadow-2xs">
-                    <i class="fa-solid fa-calendar-check text-amber-600"></i>
-                    <span class="whitespace-nowrap">Tahun Penilaian Aktif: <span id="activePeriodBadge" class="text-brandGreen">2025/2026</span></span>
-                </div>
             </div>
         </div>
 
@@ -1827,8 +1816,6 @@
                             activePeriod = result.data.settings.active_period;
                             viewedPeriod = activePeriod;
                             localStorage.setItem('pkkm_active_period', activePeriod);
-                            const badgeEl = document.getElementById('activePeriodBadge');
-                            if (badgeEl) badgeEl.innerText = activePeriod;
                         }
                         if (result.data.settings.custom_banner_url !== undefined) {
                             customBannerData = result.data.settings.custom_banner_url;
@@ -2096,7 +2083,6 @@
             activePeriod = newPeriod;
             viewedPeriod = newPeriod;
             localStorage.setItem('pkkm_active_period', activePeriod);
-            document.getElementById('activePeriodBadge').innerText = activePeriod;
 
             const dashPeriodSelect = document.getElementById('dashboardPeriodSelect');
             if (dashPeriodSelect) {
@@ -2249,11 +2235,14 @@
                 alertBox.classList.add('hidden');
                 closeModal('loginModal');
 
+                const navTabs = document.getElementById('navigationTabs');
                 const tabAdmin = document.getElementById('tabAdmin');
                 if (foundUser.role === 'ADMIN') {
-                    tabAdmin.classList.remove('hidden');
+                    navTabs?.classList.remove('hidden');
+                    tabAdmin?.classList.remove('hidden');
                 } else {
-                    tabAdmin.classList.add('hidden');
+                    navTabs?.classList.add('hidden');
+                    tabAdmin?.classList.add('hidden');
                     switchTab('dashboard');
                 }
 
@@ -2280,7 +2269,8 @@
             isLoggedIn = false;
             currentUser = null;
             localStorage.removeItem('pkkm_active_user_session');
-            document.getElementById('tabAdmin').classList.add('hidden');
+            document.getElementById('navigationTabs')?.classList.add('hidden');
+            document.getElementById('tabAdmin')?.classList.add('hidden');
             switchTab('dashboard');
             renderAuthHeader();
             renderDashboardIndicators();
@@ -2844,13 +2834,12 @@
                     currentUser = matched;
                     isLoggedIn = true;
                     if (matched.role === 'ADMIN') {
+                        document.getElementById('navigationTabs')?.classList.remove('hidden');
                         document.getElementById('tabAdmin')?.classList.remove('hidden');
                     }
                 }
             }
 
-            const badgeEl = document.getElementById('activePeriodBadge');
-            if (badgeEl) badgeEl.innerText = activePeriod;
             const dashPeriodSelect = document.getElementById('dashboardPeriodSelect');
             if (dashPeriodSelect) dashPeriodSelect.value = viewedPeriod;
             const adminPeriodSelect = document.getElementById('adminPeriodSelect');
@@ -2866,6 +2855,19 @@
 
             if (googleCloudConfig.gasUrl) {
                 pullDataFromGoogleSheet(false);
+
+                // Sinkronisasi otomatis setiap 10 detik & saat pengguna kembali membuka tab browser
+                setInterval(() => {
+                    if (!document.hidden) {
+                        pullDataFromGoogleSheet(false);
+                    }
+                }, 10000);
+
+                document.addEventListener('visibilitychange', () => {
+                    if (!document.hidden) {
+                        pullDataFromGoogleSheet(false);
+                    }
+                });
             }
         });
     </script>
