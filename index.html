@@ -1952,17 +1952,37 @@
                     }
 
                     if (result.data.allPeriodsDocLinks) {
-                        allPeriodsDocLinks = { ...allPeriodsDocLinks, ...result.data.allPeriodsDocLinks };
+                        allPeriodsDocLinks = result.data.allPeriodsDocLinks;
                         uploadedDocLinks = allPeriodsDocLinks[viewedPeriod] || {};
                         localStorage.setItem('pkkm_all_doc_links', JSON.stringify(allPeriodsDocLinks));
                     }
 
-                    if (result.data.settings && result.data.settings.active_period) {
-                        activePeriod = result.data.settings.active_period;
-                        viewedPeriod = activePeriod;
-                        localStorage.setItem('pkkm_active_period', activePeriod);
-                        const badgeEl = document.getElementById('activePeriodBadge');
-                        if (badgeEl) badgeEl.innerText = activePeriod;
+                    if (result.data.settings) {
+                        if (result.data.settings.active_period) {
+                            activePeriod = result.data.settings.active_period;
+                            viewedPeriod = activePeriod;
+                            localStorage.setItem('pkkm_active_period', activePeriod);
+                            const badgeEl = document.getElementById('activePeriodBadge');
+                            if (badgeEl) badgeEl.innerText = activePeriod;
+                        }
+                        if (result.data.settings.custom_banner_url !== undefined) {
+                            customBannerData = result.data.settings.custom_banner_url;
+                            if (customBannerData) {
+                                localStorage.setItem('pkkm_custom_banner_data', customBannerData);
+                            } else {
+                                localStorage.removeItem('pkkm_custom_banner_data');
+                            }
+                            renderHeaderBanner();
+                        }
+                        if (result.data.settings.custom_logo_url !== undefined) {
+                            customLogoData = result.data.settings.custom_logo_url;
+                            if (customLogoData) {
+                                localStorage.setItem('pkkm_custom_logo_data', customLogoData);
+                            } else {
+                                localStorage.removeItem('pkkm_custom_logo_data');
+                            }
+                            renderHeaderLogo();
+                        }
                     }
 
                     renderDashboardIndicators();
@@ -2013,9 +2033,36 @@
                         try {
                             localStorage.setItem('pkkm_custom_logo_data', customLogoData);
                             renderHeaderLogo();
-                            showSystemNotice('Logo berhasil diperbarui dan tersimpan permanen!');
                         } catch (err) {
-                            showSystemNotice('Gagal menyimpan logo: Memori penyimpanan browser penuh.');
+                            showSystemNotice('Gagal menyimpan logo di browser.');
+                        }
+
+                        if (googleCloudConfig.gasUrl) {
+                            const base64Only = customLogoData.split(',')[1] || '';
+                            fetch(googleCloudConfig.gasUrl, {
+                                method: 'POST',
+                                body: JSON.stringify({
+                                    action: 'uploadBrandingImage',
+                                    sheetId: googleCloudConfig.sheetId,
+                                    driveFolderId: googleCloudConfig.driveFolderId,
+                                    settingKey: 'custom_logo_url',
+                                    fileName: 'Logo_Madrasah_PKKM_ASPAT.png',
+                                    mimeType: 'image/png',
+                                    fileBase64: base64Only
+                                })
+                            })
+                            .then(res => res.json())
+                            .then(res => {
+                                if (res.status === 'success' && res.url) {
+                                    customLogoData = res.url;
+                                    localStorage.setItem('pkkm_custom_logo_data', customLogoData);
+                                    renderHeaderLogo();
+                                    showSystemNotice('Logo berhasil diunggah ke folder Google Drive "Data PKKM" & disimpan ke Google Sheet!');
+                                }
+                            })
+                            .catch(() => showSystemNotice('Logo tersimpan lokal, namun gagal sinkron ke Google Drive.'));
+                        } else {
+                            showSystemNotice('Logo berhasil diperbarui di penyimpanan lokal!');
                         }
                     };
                     img.src = e.target.result;
@@ -2028,6 +2075,17 @@
             customLogoData = '';
             localStorage.removeItem('pkkm_custom_logo_data');
             renderHeaderLogo();
+            if (googleCloudConfig.gasUrl) {
+                fetch(googleCloudConfig.gasUrl, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        action: 'saveSetting',
+                        sheetId: googleCloudConfig.sheetId,
+                        key: 'custom_logo_url',
+                        value: ''
+                    })
+                }).catch(() => {});
+            }
             showSystemNotice('Logo telah dikembalikan ke standar default.');
         }
 
@@ -2076,9 +2134,39 @@
                     try {
                         localStorage.setItem('pkkm_custom_banner_data', customBannerData);
                         renderHeaderBanner();
-                        showSystemNotice('Banner Header berhasil dipasang dan tersimpan permanen!');
                     } catch (err) {
-                        showSystemNotice('Gagal menyimpan banner: Ukuran file terlalu besar untuk memori browser.');
+                        showSystemNotice('Gagal menyimpan banner di browser.');
+                    }
+
+                    if (googleCloudConfig.gasUrl) {
+                        showSystemNotice('Sedang mengunggah Banner ke folder Google Drive "Data PKKM"... Mohon tunggu sebentar.');
+                        const base64Only = customBannerData.split(',')[1] || '';
+                        fetch(googleCloudConfig.gasUrl, {
+                            method: 'POST',
+                            body: JSON.stringify({
+                                action: 'uploadBrandingImage',
+                                sheetId: googleCloudConfig.sheetId,
+                                driveFolderId: googleCloudConfig.driveFolderId,
+                                settingKey: 'custom_banner_url',
+                                fileName: 'Banner_Header_PKKM_ASPAT.jpg',
+                                mimeType: 'image/jpeg',
+                                fileBase64: base64Only
+                            })
+                        })
+                        .then(res => res.json())
+                        .then(res => {
+                            if (res.status === 'success' && res.url) {
+                                customBannerData = res.url;
+                                localStorage.setItem('pkkm_custom_banner_data', customBannerData);
+                                renderHeaderBanner();
+                                showSystemNotice('Banner Header berhasil masuk ke folder Google Drive "Data PKKM" & tercatat di Google Sheet!');
+                            } else {
+                                showSystemNotice('Banner tampil di lokal, namun gagal masuk ke Drive: ' + (res.message || 'Cek izin Apps Script.'));
+                            }
+                        })
+                        .catch(err => showSystemNotice('Gagal mengirim banner ke Google Drive: ' + err.message));
+                    } else {
+                        showSystemNotice('Banner Header berhasil dipasang di penyimpanan lokal!');
                     }
                 };
                 img.src = e.target.result;
@@ -2091,6 +2179,17 @@
             customBannerData = '';
             localStorage.removeItem('pkkm_custom_banner_data');
             renderHeaderBanner();
+            if (googleCloudConfig.gasUrl) {
+                fetch(googleCloudConfig.gasUrl, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        action: 'saveSetting',
+                        sheetId: googleCloudConfig.sheetId,
+                        key: 'custom_banner_url',
+                        value: ''
+                    })
+                }).catch(() => {});
+            }
             showSystemNotice('Banner dihapus. Header dikembalikan ke tampilan logo dan judul standar.');
         }
 
