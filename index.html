@@ -128,7 +128,7 @@
             <div class="flex items-center justify-between px-5 py-3.5 sm:px-6 sm:py-4 bg-gradient-to-r from-emerald-800 via-brandGreen to-emerald-900 border-b border-amber-400 shrink-0">
                 <div class="flex items-center space-x-2 text-amber-300 font-extrabold text-base sm:text-lg">
                     <i class="fa-solid fa-cloud-arrow-up text-lg sm:text-xl text-amber-400"></i>
-                    <h2>Upload Bukti Kinerja</h2>
+                    <h2>Upload Dokumen</h2>
                 </div>
                 <button onclick="closeModal('uploadDocModal')" class="text-emerald-200 hover:text-white bg-black/20 hover:bg-black/40 rounded-full w-7 h-7 flex items-center justify-center transition-all">
                     <i class="fa-solid fa-xmark text-sm"></i>
@@ -152,8 +152,8 @@
                         <span>Upload File</span>
                     </button>
                     <button id="tabUploadDriveBtn" onclick="switchUploadTab('drive')" class="py-2 px-3 rounded-lg text-xs font-bold transition-all text-emerald-800 hover:text-emerald-950 flex items-center justify-center space-x-2">
-                        <i class="fa-brands fa-google-drive"></i>
-                        <span>Link Google Drive</span>
+                        <i class="fa-solid fa-link"></i>
+                        <span>Tautan Dokumen</span>
                     </button>
                 </div>
 
@@ -164,29 +164,29 @@
                         </div>
                         <div class="space-y-1">
                             <p id="fileSelectLabel" class="text-xs font-bold text-emerald-900">Klik untuk pilih file atau drag & drop di sini</p>
-                            <p class="text-[10px] sm:text-[11px] text-slate-500 font-medium">Format: PDF, DOC, JPG, PNG (Otomatis masuk Google Drive, Max: 10 MB)</p>
+                            <p class="text-[10px] sm:text-[11px] text-slate-500 font-medium">Format: PDF, DOC, JPG, PNG (Tersimpan otomatis di Server ASPAT, Max: 10 MB)</p>
                         </div>
                         <input type="file" id="fileInputHidden" onchange="handleFileSelected(event)" class="hidden" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
                     </div>
                 </div>
 
                 <div id="uploadDriveArea" class="space-y-2 hidden">
-                    <label class="block text-xs font-bold text-emerald-900">Tautan / URL Google Drive</label>
+                    <label class="block text-xs font-bold text-emerald-900">Tautan / URL Dokumen Online</label>
                     <div class="relative">
-                        <i class="fa-brands fa-google-drive absolute left-3.5 top-3 text-amber-600 text-xs"></i>
-                        <input type="url" id="driveUrlInput" placeholder="https://drive.google.com/file/d/..." class="w-full pl-9 pr-3 py-2.5 border border-amber-300 rounded-xl text-xs font-medium focus:ring-2 focus:ring-brandGreen outline-none bg-amber-50/30">
+                        <i class="fa-solid fa-link absolute left-3.5 top-3 text-amber-600 text-xs"></i>
+                        <input type="url" id="driveUrlInput" placeholder="Tempelkan tautan/link dokumen Anda di sini (https://...)" class="w-full pl-9 pr-3 py-2.5 border border-amber-300 rounded-xl text-xs font-medium focus:ring-2 focus:ring-brandGreen outline-none bg-amber-50/30">
                     </div>
-                    <p class="text-[10px] text-slate-500 italic">Pastikan akses tautan Google Drive telah diubah menjadi "Siapa saja yang memiliki link".</p>
+                    <p class="text-[10px] text-slate-500 italic">Pastikan izin akses tautan dokumen telah dibuka untuk publik ("Siapa saja yang memiliki link").</p>
                 </div>
 
                 <div id="uploadDriveLoading" class="hidden bg-emerald-50 border border-emerald-300 rounded-xl p-3 flex items-center justify-center space-x-2 text-xs font-bold text-emerald-800">
                     <i class="fa-solid fa-spinner fa-spin text-brandGreen text-sm"></i>
-                    <span>Mengunggah file ke Google Drive & mencatat ke Google Sheet...</span>
+                    <span>Mengunggah berkas & menyinkronkan ke Database Sistem...</span>
                 </div>
 
                 <button id="btnSaveUploadedDoc" onclick="saveUploadedDoc()" class="w-full bg-gradient-to-r from-brandGreen via-emerald-700 to-emerald-800 hover:from-brandGreen-dark hover:to-emerald-900 text-amber-300 font-extrabold py-3 px-4 rounded-xl text-xs sm:text-sm shadow-lg transition-all border border-amber-400/60 flex items-center justify-center space-x-2">
                     <i class="fa-solid fa-cloud-arrow-up text-amber-300"></i>
-                    <span>Upload ke Drive & Simpan Database</span>
+                    <span>Unggah & Simpan ke Sistem</span>
                 </button>
             </div>
         </div>
@@ -2511,7 +2511,7 @@
                 const maxAllowedBytes = googleCloudConfig.gasUrl ? (10 * 1024 * 1024) : (750 * 1024);
                 if (file.size > maxAllowedBytes) {
                     const limitLabel = googleCloudConfig.gasUrl ? '10 MB' : '700 KB (Mode Lokal)';
-                    showSystemNotice(`Ukuran file melebihi batas ${limitLabel}. Silakan kompres file atau gunakan fitur Link Google Drive!`);
+                    showSystemNotice(`Ukuran file melebihi batas ${limitLabel}. Silakan kompres file atau gunakan fitur Tautan Dokumen!`);
                     event.target.value = '';
                     return;
                 }
@@ -2562,7 +2562,7 @@
                 } else {
                     const driveUrl = document.getElementById('driveUrlInput').value.trim();
                     if (!driveUrl) {
-                        showSystemNotice('Silakan masukkan tautan Google Drive!');
+                        showSystemNotice('Silakan masukkan tautan/link dokumen terlebih dahulu!');
                         return;
                     }
                     payload.driveUrl = driveUrl;
@@ -2588,16 +2588,16 @@
 
                         closeModal('uploadDocModal');
                         renderDashboardIndicators();
-                        showSystemNotice('Sukses! File/Dokumen tersimpan di Google Drive "DATA PKKM" dan link otomatis masuk ke Google Sheet.');
+                        showSystemNotice('Berhasil! Berkas dokumen telah tersimpan aman di Server Cloud & Database PKKM ASPAT.');
                         return;
                     } else {
-                        showSystemNotice('Gagal mengunggah ke Google Drive: ' + (result.message || 'Kesalahan server Apps Script.'));
+                        showSystemNotice('Gagal mengunggah berkas ke server: ' + (result.message || 'Kesalahan koneksi server.'));
                         return;
                     }
                 } catch (err) {
                     if (loadingBox) loadingBox.classList.add('hidden');
                     if (saveBtn) saveBtn.disabled = false;
-                    showSystemNotice('Gagal terhubung ke Google Drive/Sheet: ' + err.message);
+                    showSystemNotice('Gagal terhubung ke Server Database: ' + err.message);
                     return;
                 }
             }
@@ -2612,7 +2612,7 @@
             } else {
                 const driveUrl = document.getElementById('driveUrlInput').value.trim();
                 if (!driveUrl) {
-                    showSystemNotice('Silakan masukkan tautan Google Drive!');
+                    showSystemNotice('Silakan masukkan tautan/link dokumen terlebih dahulu!');
                     return;
                 }
                 finalUrl = driveUrl;
@@ -2624,7 +2624,7 @@
                 try {
                     localStorage.setItem('pkkm_all_doc_links', JSON.stringify(allPeriodsDocLinks));
                 } catch (err) {
-                    showSystemNotice('Penyimpanan browser penuh. Hubungkan Google Drive & Sheet di Panel Admin.');
+                    showSystemNotice('Penyimpanan browser penuh. Hubungkan Server Database di Panel Admin.');
                 }
                 
                 closeModal('uploadDocModal');
