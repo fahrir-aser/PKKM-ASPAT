@@ -134,6 +134,34 @@
         </div>
     </div>
 
+    <!-- ==================== MODAL KONFIRMASI GANTI DOKUMEN LAMA ==================== -->
+    <div id="confirmReplaceModal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-4 z-50 hidden overflow-y-auto">
+        <div class="max-w-md w-full my-auto bg-white rounded-3xl shadow-2xl border-2 border-amber-400 p-5 sm:p-6 text-center space-y-4">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 bg-amber-100 rounded-full flex items-center justify-center text-amber-600 text-2xl sm:text-3xl mx-auto shadow-inner border border-amber-300">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <div class="space-y-2">
+                <h3 class="text-base sm:text-lg font-extrabold text-slate-800">Peringatan Penggantian Data</h3>
+                <p id="confirmReplaceDocTitle" class="text-xs font-bold text-emerald-900 bg-emerald-50 px-3 py-1.5 rounded-lg border border-emerald-200 truncate">
+                    Nama Dokumen
+                </p>
+                <div class="text-xs sm:text-sm text-rose-800 leading-relaxed font-semibold bg-rose-50 p-3.5 rounded-xl border border-rose-200">
+                    <i class="fa-solid fa-trash-can mr-1 text-rose-600"></i>
+                    <strong>Perhatian:</strong> Data/file lama yang sudah tersimpan di <strong>Server Pusat &amp; Database Sistem</strong> akan <strong>otomatis terhapus dan diganti</strong> jika Anda mengunggah data baru. Lanjutkan?
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-2.5 pt-1">
+                <button onclick="closeModal('confirmReplaceModal')" class="w-full bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-2.5 px-4 rounded-xl text-xs sm:text-sm transition-all">
+                    Batal
+                </button>
+                <button onclick="proceedReplaceDocument()" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold py-2.5 px-4 rounded-xl text-xs sm:text-sm shadow-md transition-all border border-amber-400 flex items-center justify-center space-x-1.5">
+                    <i class="fa-solid fa-rotate"></i>
+                    <span>Ya, Ganti Data</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- ==================== MODAL UPLOAD BUKTI KINERJA ==================== -->
     <div id="uploadDocModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 z-50 hidden overflow-y-auto">
         <div class="max-w-lg w-full my-auto bg-white rounded-3xl shadow-2xl border-2 border-amber-400 overflow-hidden space-y-0 max-h-[90vh] flex flex-col">
@@ -156,6 +184,12 @@
                         <i class="fa-solid fa-file-lines text-amber-600"></i>
                         <span>Bukti</span>
                     </p>
+                </div>
+
+                <!-- Peringatan saat mengganti dokumen yang sudah ada -->
+                <div id="replaceWarningBanner" class="hidden p-3 rounded-xl bg-rose-50 border border-rose-300 text-rose-800 text-xs font-semibold flex items-start space-x-2">
+                    <i class="fa-solid fa-triangle-exclamation text-rose-600 mt-0.5 text-sm shrink-0"></i>
+                    <span><strong>Mode Ganti Dokumen:</strong> File/data lama pada bukti ini akan otomatis terhapus dari Server Pusat begitu Anda menyimpan data baru.</span>
                 </div>
 
                 <div class="grid grid-cols-2 gap-2 p-1 bg-slate-100 rounded-xl border border-slate-200">
@@ -605,6 +639,7 @@
         let currentUploadTab = 'file';
         let selectedFileMockUrl = '';
         let selectedFileMeta = null;
+        let pendingReplaceData = null;
 
         // KONFIGURASI GOOGLE DRIVE & GOOGLE SHEETS (ID Folder sudah diperbaiki dengan huruf kapital 'I')
         const DEFAULT_CLOUD_CONFIG = {
@@ -2412,7 +2447,7 @@
                                         <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
                                     </button>
                                     ${canUploadInThisPeriod ? `
-                                        <button onclick="openUploadModal('${doc.id}', '${doc.title.replace(/'/g, "\\'")}', '${ind.title.replace(/'/g, "\\'")}')" class="bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold py-1.5 px-2.5 rounded-lg flex items-center space-x-1 shadow-xs transition-all border border-amber-400" title="Ganti Dokumen">
+                                        <button onclick="confirmReplaceDocument('${doc.id}', '${doc.title.replace(/'/g, "\\'")}', '${ind.title.replace(/'/g, "\\'")}')" class="bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold py-1.5 px-2.5 rounded-lg flex items-center space-x-1 shadow-xs transition-all border border-amber-400" title="Ganti Dokumen">
                                             <i class="fa-solid fa-rotate text-xs"></i>
                                         </button>
                                     ` : ''}
@@ -2477,7 +2512,27 @@
             container.innerHTML = html;
         }
 
-        function openUploadModal(docId, docTitle, indicatorTitle) {
+        function confirmReplaceDocument(docId, docTitle, indicatorTitle) {
+            if (viewedPeriod !== activePeriod) {
+                showSystemNotice('Mode Arsip aktif: Unggah atau ubah dokumen hanya diperbolehkan pada Tahun Penilaian Aktif.');
+                return;
+            }
+            pendingReplaceData = { docId, docTitle, indicatorTitle };
+            const titleEl = document.getElementById('confirmReplaceDocTitle');
+            if (titleEl) titleEl.innerText = docTitle;
+            openModal('confirmReplaceModal');
+        }
+
+        function proceedReplaceDocument() {
+            closeModal('confirmReplaceModal');
+            if (pendingReplaceData) {
+                const { docId, docTitle, indicatorTitle } = pendingReplaceData;
+                pendingReplaceData = null;
+                openUploadModal(docId, docTitle, indicatorTitle, true);
+            }
+        }
+
+        function openUploadModal(docId, docTitle, indicatorTitle, isReplacing = false) {
             if (viewedPeriod !== activePeriod) {
                 showSystemNotice('Mode Arsip aktif: Unggah atau ubah dokumen hanya diperbolehkan pada Tahun Penilaian Aktif.');
                 return;
@@ -2489,6 +2544,15 @@
             document.getElementById('driveUrlInput').value = '';
             document.getElementById('fileSelectLabel').innerText = 'Klik untuk pilih file atau drag & drop di sini';
             document.getElementById('uploadDriveLoading')?.classList.add('hidden');
+
+            const replaceBanner = document.getElementById('replaceWarningBanner');
+            if (replaceBanner) {
+                if (isReplacing) {
+                    replaceBanner.classList.remove('hidden');
+                } else {
+                    replaceBanner.classList.add('hidden');
+                }
+            }
 
             document.getElementById('uploadModalIndicatorTitle').innerText = indicatorTitle;
             document.getElementById('uploadModalDocTitle').innerText = `Bukti: ${docTitle}`;
